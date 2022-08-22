@@ -37,3 +37,6 @@
 更多工具
 获取百度坐标: https://api.map.baidu.com/lbsapi/getpoint/index.html
 百度地图api官方文档: https://lbsyun.baidu.com/index.php?title=jspopularGL
+
+部分参考资料：
+sqlite3 ：https://www.runoob.com/sqlite/sqlite-installation.html
