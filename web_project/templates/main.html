@@ -1,11 +1,166 @@
 <!DOCTYPE html>
-<html>
+<html lang="ch">
     <head>
-        <title>Main</title>
+        <!--编码-->
+        <meta charset="UTF-8">
+        <!--标题-->
+        <title>首页</title>
+        <!--图标-->
+        <link rel="shortcut icon" href="Images/icon.jpeg">
+        <!--预加载js support文件-->
+        <script src="js/support.js"></script>
+        <!--style-->
+        <style>
+            button {
+                cursor: pointer;
+            }
+            .menubar {
+                margin: 10px;
+                display: flex;
+                flex-direction: row;
+                flex-grow: 1;
+                height: 50px;
+                align-items: center;
+                background-color: white;
+            }
+            .menubarItem {
+                background-color: transparent;
+                color: black;
+                padding: 10px;
+                font-size: 15px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-items: center;
+                cursor: pointer;
+                border-radius: 2px;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            .menubarItem:hover {
+                border-bottom: 2px solid black;
+                transition: all .2s ease-in-out;
+            }
+            .menubarIcon {
+                height: 50px;
+            }
+            .menubarDiv {
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+            .changelan {
+                padding-left: 10px;
+                padding-right: 10px;
+                border-radius: 10px;
+                height: 30px;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                font-size: 15px;
+                background-color: transparent;
+            }
+            .changelan:hover {
+                background-color: rgba(0, 0, 0, 0.05);
+                transition: all .2s ease-in-out;
+            }
+        </style>
     </head>
 
     <body>
-        
+        <div id="top" style="display: flex; flex-direction: row; justify-content: space-around; align-items: center">
+            <!--img-->
+            <img src="Images/icon.jpeg" style="height: 50px; width: 50px; margin-left: 10px">
+            <!--menubar-->
+            <div id="menu_bar" class="menubar">
+
+                <span id="mainpage" class="menubarItem" style="border-bottom: 2px solid black">首页</span>
+
+                <div id="interview_div" class="menubarDiv">
+                    <span id="interview" class="menubarItem" onmousedown="window.location.href = getCurrentUrl() + '/interview'">采访</span>
+                </div>
+
+                <div id="shop_div" class="menubarDiv">
+                    <span id="shop" class="menubarItem" onmousedown="window.location.href = getCurrentUrl() + '/shop'">商城</span>
+                </div>
+
+                <div id="map_div" class="menubarDiv">
+                    <span id="map" class="menubarItem" onmousedown="window.location.href = getCurrentUrl() + '/map'">地图</span>
+                </div>
+
+                <div id="help_div" class="menubarDiv">
+                    <span id="help" class="menubarItem" onmousedown="window.location.href = getCurrentUrl() + '/help'" style="margin-right: 10px">领养与帮助</span>
+                </div>
+
+                <div id="change_lang_div">
+                    <button id="change_lang" class="changelan" onmousedown="changelan()">
+                        <span>中/英</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--main container-->
+        <div id="main_container" style="display: flex; flex-direction: column">
+
+            <div style="display: flex; flex-direction: row">
+                <div id="passage_container"></div>
+                <div id="shop_container"></div>
+            </div>
+        </div>
+
+        <!--一篇文章-->
+        <template id="a_passage">
+            <style>
+                .passage_deceiver {
+                    margin: 20px;
+                    padding: 10px;
+                    background-color: transparent;
+                    box-shadow: none;
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    border-radius: 5px;
+                }
+                .passage_deceiver:hover {
+                    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.3);
+                    border-color: #eee;
+                    transition: all .2s ease-in-out;
+                }
+                .title {
+                    word-wrap: break-word;
+                    word-break: normal;
+                    width: 300px;
+                }
+            </style>
+            <div class="passage_deceiver">
+                <a id="passage_a" style="display: flex; flex-direction: row; justify-content: center; text-decoration: none">
+                    <div id="title_container" style="display: flex; flex-direction: column; margin: 10px">
+                        <span id="maintitle" style="font-size: 30px; margin-bottom: 10px" class="title">Main_Title</span>
+                        <span id="subtitle" style="font-size: 15px" class="title">Sub_Title</span>
+                    </div>
+                    <div id="image_container" style="margin: 10px">
+                        <img id="mainimage" style="width: 100px; height: 100px">
+                    </div>
+                </a>
+            </div>
+
+        </template>
+
+        <script>
+            //添加一篇文章 函数
+            function add_passage(maintitle, subtitle, url, image_url) {
+                let t = document.getElementById('a_passage')
+                t.content.getElementById('passage_a').setAttribute('href', url)
+                t.content.getElementById('mainimage').src = image_url
+                t.content.getElementById('maintitle').innerText = maintitle
+                t.content.getElementById('subtitle').innerText = subtitle
+                let clone = t.content.cloneNode(true)
+                document.getElementById('passage_container').appendChild(clone)
+            }
+            //添加文章
+            add_passage('虎子：小狗狗能有什么坏心思呢，TA只是想要很多爱', ' 流浪动物发声  杭州领养 流浪动物发声  2022-07-11 18:00 发表于江苏', 'https://mp.weixin.qq.com/s/r3Qmt1Zoc-9I5soBwfJgCA', 'Images/loading.png')
+            add_passage('朱古力：死里逃生，我成为了星球上独一无二的小王子', ' 流浪动物发声  杭州领养 流浪动物发声  2022-05-22 20:07 发表于浙江', 'https://mp.weixin.qq.com/s/gOWa81PI05AuxfsGpczJhQ', 'Images/loading.png')
+
+        </script>
+
     </body>
 
 </html>
+
