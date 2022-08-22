@@ -29,7 +29,8 @@
 1. /main 主入口
 2. /interview 所有采访页面
 3. /shop 商城
-4. /map 地图5. /help 领养与帮助
+4. /map 地图
+5. /help 领养与帮助
 
 ---
 
