@@ -40,3 +40,4 @@
 
 部分参考资料：
 sqlite3 ：https://www.runoob.com/sqlite/sqlite-installation.html
+sqlite for django: https://blog.csdn.net/Gu_amber/article/details/122531578
