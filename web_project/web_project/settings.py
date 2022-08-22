@@ -71,20 +71,31 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'web_project.wsgi.application'
 
-
+#change to default database--sqlite
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+# #        'NAME': 'getResource',
+#         'NAME': 'Mysql',
+#         'HOST': 'localhost',
+#         'PORT': 3306,
+#         'USER': 'root',
+# #        'PASSWORD': '060828000615000507'
+#         'PASSWORD': '123456'
+#
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'getResource',
-        'HOST': 'localhost', 
-        'PORT': 3306, 
-        'USER': 'root', 
-        'PASSWORD': '060828000615000507'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 
 
 # Password validation
