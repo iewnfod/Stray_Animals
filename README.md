@@ -41,5 +41,4 @@
 部分参考资料：
 1. sqlite for django: https://blog.csdn.net/Gu_amber/article/details/122531578
 2. 在pycharm中添加 db navigator插件
-3. 配置sqlite中的schema
-4. 
+3.
