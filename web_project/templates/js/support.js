@@ -30,6 +30,7 @@ function getCurrentUrl() {
     var url = window.location.href
     url = url.split('/')
     url = url[0] + '/' + url[1] + '/' + url[2] + '/' + url[3]
+    return url
 }
 
 function changelan() {

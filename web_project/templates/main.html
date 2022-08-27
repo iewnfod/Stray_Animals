@@ -10,60 +10,8 @@
         <!--预加载js support文件-->
         <script src="js/support.js"></script>
         <!--style-->
-        <style>
-            button {
-                cursor: pointer;
-            }
-            .menubar {
-                margin: 10px;
-                display: flex;
-                flex-direction: row;
-                flex-grow: 1;
-                height: 50px;
-                align-items: center;
-                background-color: white;
-            }
-            .menubarItem {
-                background-color: transparent;
-                color: black;
-                padding: 10px;
-                font-size: 15px;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-items: center;
-                cursor: pointer;
-                border-radius: 2px;
-                border-top-left-radius: 5px;
-                border-top-right-radius: 5px;
-                margin-left: 10px;
-                margin-right: 10px;
-            }
-            .menubarItem:hover {
-                border-bottom: 2px solid black;
-                transition: all .2s ease-in-out;
-            }
-            .menubarIcon {
-                height: 50px;
-            }
-            .menubarDiv {
-                margin-left: 5px;
-                margin-right: 5px;
-            }
-            .changelan {
-                padding-left: 10px;
-                padding-right: 10px;
-                border-radius: 10px;
-                height: 30px;
-                border: 1px solid rgba(0, 0, 0, 0.1);
-                font-size: 15px;
-                background-color: transparent;
-            }
-            .changelan:hover {
-                background-color: rgba(0, 0, 0, 0.05);
-                transition: all .2s ease-in-out;
-            }
-        </style>
+	    <link href="css/menubar.css" rel="stylesheet" type="text/css">
+	    <link href="css/main.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
@@ -73,7 +21,7 @@
             <!--menubar-->
             <div id="menu_bar" class="menubar">
 
-                <span id="mainpage" class="menubarItem" style="border-bottom: 2px solid black">首页</span>
+                <span id="mainpage" class="menubarItem" style="border-bottom: 2px solid black" onmousedown="window.location.href = getCurrentUrl() + '/main'">首页</span>
 
                 <div id="interview_div" class="menubarDiv">
                     <span id="interview" class="menubarItem" onmousedown="window.location.href = getCurrentUrl() + '/interview'">采访</span>
@@ -93,14 +41,13 @@
 
                 <div id="change_lang_div">
                     <button id="change_lang" class="changelan" onmousedown="changelan()">
-                        <span>中/英</span>
+                        <span>中 / English</span>
                     </button>
                 </div>
             </div>
         </div>
         <!--main container-->
         <div id="main_container" style="display: flex; flex-direction: column">
-
             <div style="display: flex; flex-direction: row">
                 <div id="passage_container"></div>
                 <div id="shop_container"></div>
@@ -160,7 +107,10 @@
 
         </script>
 
+        <div style="background-color: rgba(0, 0, 0, 0.1); border-top: rgba(0, 0, 0, 0.1) 1px solid; width:100%; display: flex; flex-direction: column; align-items: center;">
+	        <span class="last_info">若有任何问题或想要加入我们，请发送邮件到我们的邮箱</span>
+	        <span class="last_info">联系邮箱: rt227919512@163.com</span>
+        </div>
     </body>
 
 </html>
-
