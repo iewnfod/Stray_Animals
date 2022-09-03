@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'arial round';
+    src: url("fonts/Arial Rounded Bold.ttf");
+}
+
 .bt {
     padding-left: 10px;
     padding-right: 10px;
@@ -8,6 +13,7 @@
     padding-top: 3px;
     padding-bottom: 3px;
 }
+
 .bt:hover {
     background-color: rgba(0, 0, 0, 0.05);
     transition: all .2s ease-in-out;
@@ -15,4 +21,52 @@
 
 .last_info {
     font-size: smaller;
+}
+
+span {
+    font-family: "arial round";
+}
+
+.hid {
+    background-color: transparent;
+    color: transparent;
+    border: transparent 0;
+}
+
+.person_img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: rgba(0, 0, 0, 0.1) 1px solid;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.person_img:hover {
+    border: rgba(0, 0, 0, 0.2) 2px solid;
+    transition: all .2s ease-in-out;
+}
+
+.card {
+    perspective: 500px;
+    cursor: pointer;
+}
+
+.card:hover .face {
+    transform: rotateY(-180deg);
+}
+.card:hover .back {
+    transform: rotateY(0);
+}
+
+.back {
+    position: absolute;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    transition: 0.5s;
+}
+.face {
+    position: absolute;
+    transition: 0.5s;
+    backface-visibility: hidden;
 }
