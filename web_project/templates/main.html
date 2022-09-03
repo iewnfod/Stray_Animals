@@ -13,7 +13,7 @@
 	    <link href="css/menubar.css" rel="stylesheet" type="text/css">
 	    <link href="css/main.css" rel="stylesheet" type="text/css">
     </head>
-
+    
     <body>
         <div id="top" style="display: flex; flex-direction: row; justify-content: space-around; align-items: center">
             <!--img-->
@@ -21,22 +21,22 @@
             <!--menubar-->
             <div id="menu_bar" class="menubar">
 
-                <span id="mainpage" class="menubarItem" style="border-bottom: 2px solid black" onmousedown="window.location.href = getCurrentUrl() + '/main'">首页</span>
+                <span id="mainpage" class="menubarItem" style="border-bottom: 2px solid black" onmousedown="window.location.href = '.../cn/main'">首页</span>
 
                 <div id="interview_div" class="menubarDiv">
-                    <span id="interview" class="menubarItem" onmousedown="window.location.href = getCurrentUrl() + '/interview'">采访</span>
+                    <span id="interview" class="menubarItem" onmousedown="window.location.href = '.../cn/interview'">采访与博客</span>
                 </div>
 
                 <div id="shop_div" class="menubarDiv">
-                    <span id="shop" class="menubarItem" onmousedown="window.location.href = getCurrentUrl() + '/shop'">商城</span>
+                    <span id="shop" class="menubarItem" onmousedown="window.location.href = '.../cn/shop'">商城</span>
                 </div>
 
                 <div id="map_div" class="menubarDiv">
-                    <span id="map" class="menubarItem" onmousedown="window.location.href = getCurrentUrl() + '/map'">地图</span>
+                    <span id="map" class="menubarItem" onmousedown="window.location.href = '.../cn/map'">地图</span>
                 </div>
 
                 <div id="help_div" class="menubarDiv">
-                    <span id="help" class="menubarItem" onmousedown="window.location.href = getCurrentUrl() + '/help'" style="margin-right: 10px">领养与帮助</span>
+                    <span id="help" class="menubarItem" onmousedown="window.location.href = '.../cn/help'" style="margin-right: 10px">领养与帮助</span>
                 </div>
 
                 <div id="change_lang_div">
@@ -44,13 +44,24 @@
                         <span>中 / English</span>
                     </button>
                 </div>
+
             </div>
+
+	        <div id="login">
+		        <img src="Images/person.png" class="person_img">
+	        </div>
+
         </div>
+
         <!--main container-->
-        <div id="main_container" style="display: flex; flex-direction: column">
+        <div id="main_container" style="display: flex; flex-direction: column; margin-left: 10px; margin-right: 10px">
             <div style="display: flex; flex-direction: row">
-                <div id="passage_container"></div>
-                <div id="shop_container"></div>
+	            <div id="passage_container"></div>
+                <div id="pet_container" style="padding: 10px; margin: 10px; margin-left: 50px; right: 10px; position: absolute; display: flex; flex-direction: column; align-items: center">
+					<div>
+						<button class="bt" style="margin-bottom: 10px">上传宠物</button>
+					</div>
+                </div>
             </div>
         </div>
 
@@ -107,10 +118,49 @@
 
         </script>
 
+        <template id="a_help">
+
+	        <a id="pet_a" style="display: flex; flex-direction: column; align-items: center; width: 150px; height: 150px; border: rgba(0, 0, 0, 0.1) 1px solid; border-radius: 10px; margin: 10px; text-decoration: none; color: black" class="card">
+		        <img src="Images/loading.png" id="pet_img" class="face" style="width: 100%; height: 100%; border-radius: 10px">
+		        <div class="back" style="display: flex; flex-direction: column; align-items: center; justify-items: center; margin: 10px">
+			        <div>
+				        <span>名字 : </span><span id="pet_name"></span>
+			        </div>
+			        <div>
+				        <span>性别 : </span><span id="pet_sex"></span>
+			        </div>
+		        </div>
+		        <span class="hid" id="pet_id"></span>
+	        </a>
+        </template>
+
+        <script>
+	        function add_pet(name, sex, img, id) {
+		        let t = document.getElementById('a_help')
+		        t.content.getElementById('pet_img').src = img
+		        t.content.getElementById('pet_name').innerText = name
+		        t.content.getElementById('pet_sex').innerText = sex
+		        t.content.getElementById('pet_id').innerText = id
+		        t.content.getElementById('pet_a').setAttribute('href', '.../cn/pet?id='+id)
+		        let clone = t.content.cloneNode(true)
+		        document.getElementById('pet_container').appendChild(clone)
+
+	        }
+			add_pet('name', 'sex', '', '')
+	        add_pet('name', 'sex', '', '')
+        </script>
+
         <div style="background-color: rgba(0, 0, 0, 0.1); border-top: rgba(0, 0, 0, 0.1) 1px solid; width:100%; display: flex; flex-direction: column; align-items: center;">
 	        <span class="last_info">若有任何问题或想要加入我们，请发送邮件到我们的邮箱</span>
-	        <span class="last_info">联系邮箱: rt227919512@163.com</span>
+	        <span class="last_info">联系邮箱: </span>
         </div>
+
+        <script>
+	        document.getElementById('login').addEventListener('click', function () {
+
+	        })
+        </script>
+
     </body>
 
 </html>
