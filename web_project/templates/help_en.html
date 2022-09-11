@@ -65,18 +65,18 @@
 			<div id="toolbar" style="display: flex; flex-direction: row; align-items: center">
 
 				<select id="pet_type_selector" class="select_pet">
-					<option value="-1">宠物类型</option>
-					<option value="1">狗狗</option>
-					<option value="0">猫猫</option>
+					<option value="-1">Pet type</option>
+					<option value="1">Dog</option>
+					<option value="0">Cat</option>
 				</select>
 
 				<select id="pet_sex_selector" class="select_pet">
-					<option value="-1">宠物性别</option>
-					<option value="0">雄性</option>
-					<option value="1">雌性</option>
+					<option value="-1">Pet gender</option>
+					<option value="0">male</option>
+					<option value="1">female</option>
 				</select>
 
-				<button id="select_bt" class="bt" style="margin-left: 10px">确定</button>
+				<button id="select_bt" class="bt" style="margin-left: 10px">confirm</button>
 			</div>
 
 			<div id="all_items">
@@ -98,17 +98,17 @@
 				<img src="Images/loading.png" style="width: 100px; height: 100px" id="pet_img">
 				<div id="all_info" style="margin: 10px">
 					<div style="padding: 10px">
-						<span>名字 : </span><span id="pet_name" style="margin-right: 20px"></span>
-						<span>性别 : </span><span id="pet_sex"></span>
+						<span>name : </span><span id="pet_name" style="margin-right: 20px"></span>
+						<span>gender : </span><span id="pet_sex"></span>
 					</div>
-					<span style="padding: 10px">性格特征 : </span><span id="pet_char"></span>
+					<span style="padding: 10px">pet's personality : </span><span id="pet_char"></span>
 				</div>
 			</div>
-			<!-- -1 未知; 1 女; 0 男-->
+			<!-- -1 unknown; 1 female; 0 male-->
 			<span id="sex" class="hid">-1</span>
-			<!-- -1 未知; 1 狗; 0 猫-->
+			<!-- -1 unknown; 1 dog; 0 cat-->
 			<span id="pet_type" class="hid">-1</span>
-			<!--宠物id-->
+			<!--pet id-->
 			<span id="pet_id" class="hid"></span>
 		</template>
 
@@ -116,7 +116,7 @@
 			function add_help_item(pet_name, pet_sex, pet_char, pet_img, pet_type, pet_id) {
 				let t = document.getElementById('a_help_item')
 				t.content.getElementById('pet_name').innerText = pet_name
-				var sexl = {'0': '男', '1': '女', '-1': '未知'}
+				var sexl = {'0': 'male', '1': 'female', '-1': 'unknown'}
 				t.content.getElementById('pet_sex').innerText = sexl[pet_sex]
 				t.content.getElementById('sex').innerText = pet_sex
 				t.content.getElementById('pet_type').innerText = pet_type
@@ -132,8 +132,8 @@
 		</script>
 
 		<div style="background-color: rgba(0, 0, 0, 0.1); border-top: rgba(0, 0, 0, 0.5) 1px solid; width:100%; display: flex; flex-direction: column; align-items: center;">
-			<span class="last_info">若有任何问题或想要加入我们，请发送邮件到我们的邮箱</span>
-			<span class="last_info">联系邮箱: rt227919512@163.com</span>
+			<span class="last_info">For further question or wanting to join our project please send us a email</span>
+			<span class="last_info">contact us with: rt227919512@163.com</span>
 		</div>
 
 	</body>
