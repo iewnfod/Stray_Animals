@@ -26,8 +26,7 @@
 ---
 
 # 全部接口
-https://.../{cn/en}/{main/interview/shop/map/help}
-主要url结构 : https://.../(cn/en)/...
+https://.../{main/interview/shop/map/help}_{cn/en}.html
 1. /main 主入口
 2. /interview 所有采访页面
 3. /shop 商城
