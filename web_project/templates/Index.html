@@ -1,8 +1,24 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script>
-			window.location.href = "Index_cn.html"
-		</script>
+		<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 	</head>
+	<body>
+		<script>
+			GetIPAll()
+			function GetIPAll() {
+				let iPAddress = returnCitySN["cip"]
+				let iPAttach = returnCitySN["cname"]
+				// console.log(returnCitySN)
+				// console.log(iPAttach)
+				// console.log(iPAddress)
+				let re = /[^\u4E00-\u9FA5]/
+				if (re.test(iPAttach)) {
+					window.location.href = 'Index_en.html'
+				} else {
+					window.location.href = 'Index_cn.html'
+				}
+			}
+		</script>
+	</body>
 </html>
