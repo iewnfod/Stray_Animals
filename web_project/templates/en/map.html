@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+        <style>
+            html {
+                height: 100%;
+            }
+            body {
+                height: 100%;
+                margin: 0px;
+                padding: 0px;
+            }
+            #container {
+                height: 100%;
+            }
+        </style>
+        <script src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=GybsVFaClYXeYBK6h5Mmr0e7CDNM6ouW"></script>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script src="{% static 'js/map_function.js' %}"></script>
+    </body>
+</html>

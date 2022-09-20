@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="js/support.js"></script>
+	</head>
+	<body>
+		<!--读取文件-->
+		<input type="file" id="file">
+		<span id="dom"></span>
+		<script>
+			document.getElementById('file').onchange = function () {
+				console.dir(this.files)
+				let fileOne = this.files
+				for (let i = 0; i < fileOne.length; i ++) {
+					let newFile = new FileReader()
+					console.log(fileOne[i])
+					newFile.readAsBinaryString(fileOne[i])
+					newFile.onload = function () {
+						let result = this.result
+						console.log(result)
+						document.getElementById('dom').innerText = result
+					}
+				}
+			}
+		</script>
+
+	</body>
+</html>

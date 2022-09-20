@@ -5,19 +5,18 @@
 	</head>
 	<body>
 		<script>
-			GetIPAll()
-			function GetIPAll() {
-				let iPAddress = returnCitySN["cip"]
-				let iPAttach = returnCitySN["cname"]
-				// console.log(returnCitySN)
-				// console.log(iPAttach)
-				// console.log(iPAddress)
-				let re = /[^\u4E00-\u9FA5]/
-				if (re.test(iPAttach)) {
-					window.location.href = 'Index_en.html'
-				} else {
-					window.location.href = 'Index_cn.html'
-				}
+			window.location.href = "./cn/index.html"
+		</script>
+		<script>
+			let iPAttach = returnCitySN["cname"]
+			// console.log(returnCitySN)
+			// console.log(iPAttach)
+			// console.log(iPAddress)
+			let re = /[^\u4E00-\u9FA5]/
+			if (re.test(iPAttach)) {
+				window.location.href = 'Index_en.html'
+			} else {
+				window.location.href = 'Index_cn.html'
 			}
 		</script>
 	</body>
