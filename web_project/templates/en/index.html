@@ -12,6 +12,7 @@
 		<!--style-->
 		<link href="../css/menubar.css" rel="stylesheet" type="text/css">
 		<link href="../css/main.css" rel="stylesheet" type="text/css">
+		<link href="../css/font/fonts.css" rel="stylesheet" type="text/css">
 		<!--js 初始化值-->
 		<script>
 			var login_window_exist = false
@@ -52,7 +53,7 @@
 			</div>
 
 			<div id="login">
-				<img src="Images/person.png" class="person_img">
+				<img src="../Images/person.png" class="person_img">
 			</div>
 
 		</div>
@@ -123,8 +124,8 @@
 				document.getElementById('passage_container').appendChild(clone)
 			}
 			//添加文章
-			add_passage('虎子：小狗狗能有什么坏心思呢，TA只是想要很多爱', ' 流浪动物发声  杭州领养 流浪动物发声  2022-07-11 18:00 发表于江苏', 'https://mp.weixin.qq.com/s/r3Qmt1Zoc-9I5soBwfJgCA', 'Images/loading.png')
-			add_passage('朱古力：死里逃生，我成为了星球上独一无二的小王子', ' 流浪动物发声  杭州领养 流浪动物发声  2022-05-22 20:07 发表于浙江', 'https://mp.weixin.qq.com/s/gOWa81PI05AuxfsGpczJhQ', 'Images/loading.png')
+			add_passage('虎子：小狗狗能有什么坏心思呢，TA只是想要很多爱', ' 流浪动物发声  杭州领养 流浪动物发声  2022-07-11 18:00 发表于江苏', 'https://mp.weixin.qq.com/s/r3Qmt1Zoc-9I5soBwfJgCA', '../Images/loading.png')
+			add_passage('朱古力：死里逃生，我成为了星球上独一无二的小王子', ' 流浪动物发声  杭州领养 流浪动物发声  2022-05-22 20:07 发表于浙江', 'https://mp.weixin.qq.com/s/gOWa81PI05AuxfsGpczJhQ', '../Images/loading.png')
 
 		</script>
 
@@ -132,7 +133,7 @@
 		<template id="a_help">
 
 			<a id="pet_a" style="display: flex; flex-direction: column; align-items: center; width: 150px; height: 150px; border: rgba(0, 0, 0, 0.1) 1px solid; border-radius: 10px; margin: 10px; text-decoration: none; color: black" class="card">
-				<img src="Images/loading.png" id="pet_img" class="face" style="width: 100%; height: 100%; border-radius: 10px; border: transparent 0 solid">
+				<img src="../Images/loading.png" id="pet_img" class="face" style="width: 100%; height: 100%; border-radius: 10px; border: transparent 0 solid">
 				<div class="back" style="display: flex; flex-direction: column; align-items: center; justify-items: center; margin: 10px">
 					<div>
 						<span>name : </span><span id="pet_name"></span>
@@ -157,8 +158,8 @@
 				let clone = t.content.cloneNode(true)
 				document.getElementById('pet_container').appendChild(clone)
 			}
-			add_pet('name', 'sex', '', '')
-			add_pet('name', 'sex', '', '')
+			add_pet('name', 'sex', '../Images/loading.png', '')
+			add_pet('name', 'sex', '../Images/loading.png', '')
 		</script>
 
 		<!--登录框-->

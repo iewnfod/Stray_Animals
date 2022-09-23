@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ch">
+	<head>
+		<meta charset="UTF-8">
+		<title>templates</title>
+	</head>
+
+	<body>
+		<!--登录框-->
+		<template id="login_frame">
+			<div style="display: flex; flex-direction: column; align-items: center; width: 100%; height: 100%; top: 0; left: 0; position: relative">
+				<div style="display: flex; flex-grow: 1; flex-direction: column; border-radius: 10px; position: absolute; width: 1000px; height: 550px" id="login_div">
+					<iframe style="height: 90%; width: 100%; border: 1px black solid; border-top-left-radius: 10px; border-top-right-radius: 10px" src="login.html"></iframe>
+					<button id="login_cancel" class="bt" style="border-top-left-radius: 0; border-top-right-radius: 0; width: 100%; border: 1px  black solid">取消</button>
+				</div>
+				<script>
+					document.getElementById('login_cancel').addEventListener('click', function () {
+						let ld = document.getElementById('login_div')
+						ld.parentNode.removeChild(ld)
+						login_window_exist = false
+						document.getElementById('main_container').style.opacity = '1'
+					})
+				</script>
+			</div>
+		</template>
+
+	</body>
+</html>

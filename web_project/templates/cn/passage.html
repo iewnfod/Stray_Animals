@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ch">
+	<head>
+		<!--编码-->
+		<meta charset="UTF-8">
+		<meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
+		<!--标题-->
+		<title>Passage</title>
+		<!--图标-->
+		<link rel="shortcut icon" href="../Images/icon.jpeg">
+		<!--预加载js support文件-->
+		<script src="../js/support.js"></script>
+		<!--style-->
+		<link href="../css/menubar.css" rel="stylesheet" type="text/css">
+		<link href="../css/main.css" rel="stylesheet" type="text/css">
+		<link href="../css/font/fonts.css" rel="stylesheet" type="text/css">
+	</head>
+
+	<body>
+
+		<div id="top" style="display: flex; flex-direction: row; justify-content: space-around; align-items: center">
+			<!--img-->
+			<img src="../Images/icon.jpeg" style="height: 50px; width: 50px; margin-left: 10px">
+			<!--menubar-->
+			<div id="menu_bar" class="menubar">
+
+				<span id="mainpage" class="menubarItem" style="border-bottom: 2px solid black"
+				      onmousedown="window.location.href = './index.html'">首页</span>
+
+				<div id="interview_div" class="menubarDiv">
+					<span id="interview" class="menubarItem"
+					      onmousedown="window.location.href = './interview.html'">采访与博客</span>
+				</div>
+
+				<div id="shop_div" class="menubarDiv">
+					<span id="shop" class="menubarItem" onmousedown="window.location.href = './shop.html'">商城</span>
+				</div>
+
+				<div id="map_div" class="menubarDiv">
+					<span id="map" class="menubarItem" onmousedown="window.location.href = './map.html'">地图</span>
+				</div>
+
+				<div id="help_div" class="menubarDiv">
+					<span id="help" class="menubarItem" onmousedown="window.location.href = './help.html'"
+					      style="margin-right: 10px">领养与帮助</span>
+				</div>
+
+				<div id="change_lang_div">
+					<button id="change_lang" class="changelan" onmousedown="window.location.href='../en/index.html'">
+						<span>中 / English</span>
+					</button>
+				</div>
+
+			</div>
+
+			<div id="login">
+				<img src="../Images/person.png" class="person_img">
+			</div>
+
+		</div>
+
+		<div id="login_container" style="position: absolute; z-index: 1; width: 100%"></div>
+
+		<div>
+
+			<div class="content">
+				<iframe src="" id="passage_content" style="border: transparent">
+					<!--通过导入html文件来实现文件md文件展示-->
+				</iframe>
+			</div>
+
+			<div class="comment">
+				<div class="add_comment" style="display: flex; flex-direction: row; flex-grow: 1; align-items: center; border-radius: 10px; padding: 10px; background-color: aliceblue">
+					<input id="input_comment" style="width: 80%; height: 50px; border: 1px solid rgb(199, 193, 193); border-radius: 5px; padding-left: 10px; padding-right: 10px;" type="text" placeholder="来发表你的评论吧！">
+					<button class="bt" style="margin-left: 10px; height: 50px; width: 20%">发送</button>
+				</div>
+
+				<div id="all_comment"></div>
+			</div>
+
+		</div>
+
+	</body>
+
+	<!--需要后置加载的文件-->
+	<iframe src="./templates.html" id="templates" style="width: 0; height: 0; border: transparent"></iframe>
+
+	<script src="./js/templates.js"></script>
+
+</html>
