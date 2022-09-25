@@ -7,19 +7,15 @@
     background-color: transparent;
     padding-top: 3px;
     padding-bottom: 3px;
+    transition: .2s ease;
 }
 
 .bt:hover {
     background-color: rgba(0, 0, 0, 0.05);
-    transition: all .2s ease-in-out;
 }
 
 .last_info {
     font-size: smaller;
-}
-
-span {
-    font-family: "arial round";
 }
 
 .hid {

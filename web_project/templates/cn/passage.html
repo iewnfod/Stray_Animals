@@ -75,12 +75,121 @@
 					<button class="bt" style="margin-left: 10px; height: 50px; width: 20%">发送</button>
 				</div>
 
-				<div id="all_comment"></div>
+				<div id="all_comment_div" style="margin: 10px">
+					<span style="font-size: 20px">全部评论</span><span id="comment_num" style="margin-left: 10px">0</span>
+
+					<div style="border-radius: 10px; padding: 10px" id="all_comment">
+
+					</div>
+				</div>
+
 			</div>
 
 		</div>
 
 	</body>
+
+	<!--一条二级评论-->
+	<template id="a_sub_comment">
+		<div style="display: flex; flex-direction: row; align-items: center; margin: 10px" id="sub_detector">
+			<div id="sub_head">
+				<img src="../Images/person.png" class="person_img">
+			</div>
+			<div id="sub_name_and_comment_and_button">
+				<div id="sub_name_and_comment" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-around; margin-left: 5px; flex-grow: 1">
+					<div id="sub_name" style="font-size: 7px">未命名</div>
+					<div id="sub_comment_content" style="margin-top: 3px; width: 100%">
+						<span style="width: 100%; font-size: 15px">Try Comment</span>
+					</div>
+				</div>
+				<div id="sub_buttons" style="margin: 10px; display: flex; flex-direction: row; justify-content: left">
+					<button class="bt" style="border: 0; display: flex; flex-direction: row; justify-content: center; align-items: center" id="like_bt">
+						<img src="../Images/like.png" style="width: 15px; height: 15px" id="sub_like_img">
+						<span id="sub_like_num" style="margin-left: 2px">0</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</template>
+
+	<!--一条评论-->
+	<template id="a_comment">
+		<div style="display: flex; flex-direction: row; align-items: center; margin: 10px" id="detector">
+			<div id="head">
+				<img src="../Images/person.png" style="height: 50px; width: 50px;" class="person_img" id="user_img">
+				<div class="hid" id="comment_id"></div>
+			</div>
+			<div id="name_and_comment_and_button">
+				<div id="name_and_comment" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-around; margin-left: 5px; flex-grow: 1">
+					<div id="name" style="font-size: 10px">未命名</div>
+					<div id="comment_content" style="margin-top: 3px; width: 100%">
+						<span style="width: 100%">Try Comment</span>
+					</div>
+				</div>
+				<div id="buttons" style="margin: 10px; display: flex; flex-direction: row; justify-content: left">
+					<button class="bt" style="border: 0; display: flex; flex-direction: row; justify-content: center; align-items: center" id="like_bt">
+						<img src="../Images/like.png" style="width: 15px; height: 15px" id="like_img">
+						<span id="like_num" style="margin-left: 2px">0</span>
+					</button>
+					<button class="bt" id="reply_bt" style="border: 0; display: flex; flex-direction: row; justify-content: center; align-items: center">
+						<img src="../Images/reply.png" style="width: 15px; height: 15px" id="reply_img">
+						<span id="reply_num" style="margin-left: 3px">0</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="sub_comment_div" style="margin: 10px; border-radius: 10px; border: 1px gainsboro solid"></div>
+
+		<script>
+			var sub_comment_exist = false
+			// 点赞
+			document.getElementById('like_bt').addEventListener('click', function () {
+				let like_img = document.getElementById('like_img')
+				let s = like_img.src.split('/')
+				console.log(s)
+				if (s[s.length - 1] == 'like.png') {
+					like_img.src = '../Images/liked.png'
+					// 点赞
+				} else {
+					like_img.src = '../Images/like.png'
+					// 取消点赞
+				}
+			})
+
+			// 回复
+			document.getElementById('reply_bt').addEventListener('click', function () {
+				if (sub_comment_exist == false) {
+					let t = document.getElementById('a_sub_comment')
+					let clone = t.content.cloneNode(true)
+					document.getElementById('sub_comment_div').appendChild(clone)
+					sub_comment_exist = true
+				} else {
+					let allchildren = document.getElementById('sub_comment_div').childNodes
+					for (let i = 0; i < allchildren.length; i ++) {
+						document.getElementById('sub_comment_div').removeChild(allchildren[i])
+					}
+					sub_comment_exist = false
+				}
+			})
+		</script>
+	</template>
+
+	<script>
+		function add_comment(comment, user) {
+			let t = document.getElementById('a_comment')
+			t.content.getElementById('comment_id').innerText = comment['id']
+			t.content.getElementById('name').innerText = user['name']
+			t.content.getElementById('user_img').src = user['img']
+			t.content.getElementById('comment_content').innerText = comment['content']
+			t.content.getElementById('like_num').innerText = comment['like_num']
+			t.content.getElementById('reply_num').innerText = comment['reply_num']
+			let clone = t.content.cloneNode(true)
+			document.getElementById('all_comment').appendChild(clone)
+		}
+		add_comment({'content': 123, 'id': 123, 'like_num': 1, 'reply_num': 1}, {'name':123, 'img':'../Images/person.png'}, 0, 0)
+		add_comment({'content': 123, 'id': 123, 'like_num': 1, 'reply_num': 1}, {'name':123, 'img':'../Images/person.png'}, 0, 0)
+	</script>
 
 	<!--需要后置加载的文件-->
 	<iframe src="./templates.html" id="templates" style="width: 0; height: 0; border: transparent"></iframe>

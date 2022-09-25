@@ -25,11 +25,14 @@ button {
     border-top-right-radius: 5px;
     margin-left: 10px;
     margin-right: 10px;
+    transition-timing-function: ease;
+    transition-duration: .2s;
+    transition-property: all;
 }
 .menubarItem:hover {
     border-bottom: 2px solid black;
-    transition: all .2s ease-in-out;
 }
+
 .menubarIcon {
     height: 50px;
 }
@@ -37,6 +40,7 @@ button {
     margin-left: 5px;
     margin-right: 5px;
 }
+
 .changelan {
     padding-left: 10px;
     padding-right: 10px;
@@ -46,8 +50,9 @@ button {
     background-color: transparent;
     padding-top: 3px;
     padding-bottom: 3px;
+    transition: .2s ease;
 }
+
 .changelan:hover {
     background-color: rgba(0, 0, 0, 0.05);
-    transition: all .2s ease-in-out;
 }
