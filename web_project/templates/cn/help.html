@@ -89,59 +89,94 @@
 		<!--添加一个动物-->
 		<template id="a_help_item">
 			<style>
-				.hid {
-					background-color: transparent;
-					color: transparent;
-					border: transparent;
+				.tag {
+					background-color: rgba(0, 0, 0, 0.05);
+					border-radius: 5px;
+					font-size: 15px;
+					margin-left: 10px;
+					margin-right: 10px;
+					padding: 5px;
+				}
+				.l {
+					text-decoration: none;
+					color: black;
 				}
 			</style>
-			<div style="border-top: black 1px solid; margin-top: 10px; padding: 10px; display: flex; flex-direction: row; align-items: center">
-				<img src="../Images/loading.png" style="width: 100px; height: 100px" id="pet_img">
-				<div id="all_info" style="margin: 10px">
-					<div style="padding: 10px">
-						<span>名字 : </span><span id="pet_name" style="margin-right: 20px"></span>
-						<span>性别 : </span><span id="pet_sex"></span>
+			<a id="link" class="l">
+				<div style="border-top: black 1px solid; margin-top: 10px; padding: 10px; display: flex; flex-direction: row; align-items: center">
+					<img src="../Images/loading.png" style="width: 100px; height: 100px" id="pet_img">
+					<div id="all_info" style="margin: 10px">
+						<div style="padding: 10px">
+							<span>名字 : </span><span id="pet_name" style="margin-right: 20px"></span>
+							<span>性别 : </span><span id="pet_sex"></span>
+						</div>
+						<div style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center">
+							<span class="tag" id="weight"></span>
+							<span class="tag" id="sterilization"></span>
+							<span class="tag" id="parasite"></span>
+							<span class="tag" id="immune"></span>
+						</div>
 					</div>
-					<span style="padding: 10px">性格特征 : </span><span id="pet_char"></span>
 				</div>
-			</div>
-			<!-- -1 未知; 1 女; 0 男-->
-			<span id="sex" class="hid">-1</span>
-			<!-- -1 未知; 1 狗; 0 猫-->
-			<span id="pet_type" class="hid">-1</span>
-			<!--宠物id-->
-			<span id="pet_id" class="hid"></span>
+			</a>
 		</template>
 
 		<script>
 
-			function add_help_item(pet_name, pet_sex, pet_char, pet_img, pet_type, pet_id) {
+			class pet {
+				constructor(name, sex, img, type, id, weight, sterilization, parasite, immune) {
+					this.name = name // string
+					this.sex = sex // 0, 1, -1
+					this.img = img // url
+					this.type = type // string 猫，狗...
+					this.id = id // string
+					this.weight = weight // int
+					this.sterilization = sterilization // bool
+					this.parasite = parasite // bool
+					this.immune = immune // bool
+					this.link = "./pet/" + id
+				}
+			}
+
+			function add_help_item(p) {
 				let t = document.getElementById('a_help_item')
-				t.content.getElementById('pet_name').innerText = pet_name
+				t.content.getElementById('pet_name').innerText = p.name
 				var sexl = {'0': '男', '1': '女', '-1': '未知'}
-				t.content.getElementById('pet_sex').innerText = sexl[pet_sex]
-				t.content.getElementById('sex').innerText = pet_sex
-				t.content.getElementById('pet_type').innerText = pet_type
-				t.content.getElementById('pet_char').innerText = pet_char
-				t.content.getElementById('pet_img').setAttribute('src', pet_img)
-				t.content.getElementById('pet_id').innerText = pet_id
+				t.content.getElementById('pet_sex').innerText = sexl[p.sex]
+				t.content.getElementById('pet_img').setAttribute('src', p.img)
+				t.content.getElementById('weight').innerText = p.weight.toString() + '斤'
+				t.content.getElementById('link').setAttribute('href', p.link)
+
+				if (p.sterilization == true) {
+					t.content.getElementById('sterilization').innerText = '已绝育'
+				} else {
+					t.content.getElementById('sterilization').innerText = '未绝育'
+				}
+
+				if (p.parasite == true) {
+					t.content.getElementById('parasite').innerText = '已驱虫'
+				} else {
+					t.content.getElementById('parasite').innerText = '未驱虫'
+				}
+
+				if (p.immune == true) {
+					t.content.getElementById('immune').innerText = '已免疫'
+				} else {
+					t.content.getElementById('immune').innerText = '未免疫'
+				}
+
 				let clone = t.content.cloneNode(true)
 				document.getElementById('all_items').appendChild(clone)
 			}
 
-			add_help_item('福福', '0', 'xxx', 'xxx', '-1')
-			add_help_item('核桃', '1', 'xxx', 'xxx', '-1')
-			add_help_item('克罗心', '1', 'xxx', 'xxx', '-1')
-			add_help_item('茅台', '1', 'xxx', 'xxx', '-1')
-			add_help_item('棕棕', '0', 'xxx', 'xxx', '-1')
-			add_help_item('小王子', '0', 'xxx', 'xxx', '-1')
-			add_help_item('夏洛', '0', 'xxx', 'xxx', '-1')
-			add_help_item('米苏', '1', 'xxx', 'xxx', '-1')
-			add_help_item('小乖', '1', 'xxx', 'xxx', '-1')
-			add_help_item('纸板', '0', 'xxx', 'xxx', '-1')
-			add_help_item('涯妹', '1', 'xxx', 'xxx', '-1')
-			add_help_item('小新', '1', 'xxx', 'xxx', '-1')
-				      
+			pet_list = new Array()
+			// pet(name: string, sex: int, img: string, type: string, id: string, weight: int, sterilization: bool, parasite: bool, immune: bool)
+			pet_list.push(new pet('福福', '0', '', '狗', '1', 20, true, true, true))
+
+			for (var i = 0; i < pet_list.length; i ++) {
+				add_help_item(pet_list[i])
+			}
+
 		</script>
 
 		<div style="background-color: rgba(0, 0, 0, 0.1); border-top: rgba(0, 0, 0, 0.5) 1px solid; width:100%; display: flex; flex-direction: column; align-items: center;">
