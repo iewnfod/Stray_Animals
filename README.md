@@ -15,7 +15,7 @@
 ---
 
 # 平台使用
-1. 地图：百度地图
+1. 地图：高德地图
 2. 验证码：互亿无限
 
 ---
@@ -26,12 +26,13 @@
 ---
 
 # 全部接口
-https://.../{main/interview/shop/map/help}_{cn/en}.html
-1. /main 主入口
-2. /interview 所有采访页面
-3. /shop 商城
-4. /map 地图
-5. /help 领养与帮助
+https://.../{cn/en}/{main/interview/shop/map/help}.html
+1. /index.html 主入口
+2. /interview.html 所有采访页面
+3. /shop.html 商城
+4. /map.html 地图
+5. /help.html 领养与帮助
+...
 
 ---
 
@@ -39,9 +40,7 @@ https://.../{main/interview/shop/map/help}_{cn/en}.html
 
 * 获取百度坐标: https://api.map.baidu.com/lbsapi/getpoint/index.html
 
-* 百度地图api官方文档: https://lbsyun.baidu.com/index.php?title=jspopularGL
-
-* 测试: anywhere (安装 node.js MacOS:[sudo npm install anywhere -g] Windows:自己查吧!!!)
+* 测试: anywhere (安装 node.js; MacOS/Linux:[sudo npm install anywhere -g] Windows:自己查吧!!!)
 
 * 高德地图: https://lbs.amap.com/api/javascript-api/summary
 
