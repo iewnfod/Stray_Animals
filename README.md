@@ -43,6 +43,8 @@ https://.../{main/interview/shop/map/help}_{cn/en}.html
 
 * 测试: anywhere (安装 node.js MacOS:[sudo npm install anywhere -g] Windows:自己查吧!!!)
 
+* 高德地图: https://lbs.amap.com/api/javascript-api/summary
+
 ---
 
 部分参考资料：
