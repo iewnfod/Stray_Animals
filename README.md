@@ -38,6 +38,16 @@ https://.../{cn/en}/{main/interview/shop/map/help}.html
 
 ---
 
+# Cookie
+
+## Potential Cookies
+id: 
+username: 
+userimg: 
+loginTime: 
+
+---
+
 # 更多工具
 
 * 获取百度坐标: https://api.map.baidu.com/lbsapi/getpoint/index.html
