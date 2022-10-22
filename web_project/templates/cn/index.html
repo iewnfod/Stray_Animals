@@ -2,18 +2,20 @@
 <html lang="ch">
     <head>
         <!--编码-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" >
         <meta charset="UTF-8">
-	    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
         <!--标题-->
         <title>首页</title>
         <!--图标-->
         <link rel="shortcut icon" href="../Images/icon.jpeg">
-	    <!--预加载js support文件-->
+        <!--预加载js support文件-->
         <script src="../js/support.js"></script>
+        <script src="../js/main.js"></script>
         <!--style-->
-	    <link href="../css/menubar.css" rel="stylesheet" type="text/css">
-	    <link href="../css/main.css" rel="stylesheet" type="text/css">
-	    <link href="../css/font/fonts.css" rel="stylesheet" type="text/css">
+        <link href="../css/menubar.css" rel="stylesheet" type="text/css">
+        <link href="../css/main.css" rel="stylesheet" type="text/css">
+        <link href="../css/font/fonts.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
@@ -43,16 +45,16 @@
                 </div>
 
                 <div id="change_lang_div">
-                    <button id="change_lang" class="changelan" onmousedown="window.location.href='../en/index.html'">
+                    <button id="change_lang" class="changelan" onclick="change_lang('cn', 'en')">
                         <span>中 / English</span>
                     </button>
                 </div>
 
             </div>
 
-	        <div id="login">
-		        <img src="../Images/person.png" class="person_img">
-	        </div>
+            <div id="login">
+                <img src="../Images/person.png" class="person_img" id="person_img">
+            </div>
 
         </div>
 
@@ -61,17 +63,17 @@
         <!--main container-->
         <div id="main_container" style="display: flex; flex-direction: column; margin-left: 10px; margin-right: 10px">
             <div style="display: flex; flex-direction: row">
-	            <div id="passage_container"></div>
+                <div id="passage_container"></div>
                 <div id="pet_container" style="padding: 10px; margin: 10px; margin-left: 50px; right: 10px; position: absolute; display: flex; flex-direction: column; align-items: center">
-					<div>
-						<button class="bt" style="margin-bottom: 10px">上传宠物</button>
-					</div>
+                    <div>
+                        <button class="bt" style="margin-bottom: 10px">上传宠物</button>
+                    </div>
                 </div>
             </div>
-	        <div style="background-color: rgba(0, 0, 0, 0.1); border-top: rgba(0, 0, 0, 0.1) 1px solid; width:100%; display: flex; flex-direction: column; align-items: center;">
-		        <span class="last_info">若有任何问题或想要加入我们，请发送邮件到我们的邮箱</span>
-		        <span class="last_info">联系邮箱: strayanimal@163.com</span>
-	        </div>
+            <div style="background-color: rgba(0, 0, 0, 0.1); border-top: rgba(0, 0, 0, 0.1) 1px solid; width:100%; display: flex; flex-direction: column; align-items: center;">
+                <span class="last_info">若有任何问题或想要加入我们，请发送邮件到我们的邮箱</span>
+                <span class="last_info">联系邮箱: strayanimal@163.com</span>
+            </div>
         </div>
 
         <!--一篇文章-->
@@ -121,7 +123,7 @@
                 let clone = t.content.cloneNode(true)
                 document.getElementById('passage_container').appendChild(clone)
             }
-            //添加文章
+            // 添加文章
             add_passage('虎子：小狗狗能有什么坏心思呢，TA只是想要很多爱', ' 流浪动物发声  杭州领养 流浪动物发声  2022-07-11 18:00 发表于江苏', 'https://mp.weixin.qq.com/s/r3Qmt1Zoc-9I5soBwfJgCA', '../Images/loading.png')
             add_passage('朱古力：死里逃生，我成为了星球上独一无二的小王子', ' 流浪动物发声  杭州领养 流浪动物发声  2022-05-22 20:07 发表于浙江', 'https://mp.weixin.qq.com/s/gOWa81PI05AuxfsGpczJhQ', '../Images/loading.png')
 
@@ -130,39 +132,39 @@
         <!--一个help card-->
         <template id="a_help">
 
-	        <a id="pet_a" style="display: flex; flex-direction: column; align-items: center; width: 150px; height: 150px; border: rgba(0, 0, 0, 0.1) 1px solid; border-radius: 10px; margin: 10px; text-decoration: none; color: black" class="card">
-		        <img src="../Images/loading.png" id="pet_img" class="face" style="width: 100%; height: 100%; border-radius: 10px; border: transparent 0 solid">
-		        <div class="back" style="display: flex; flex-direction: column; align-items: center; justify-items: center; margin: 10px">
-			        <div>
-				        <span>名字 : </span><span id="pet_name"></span>
-			        </div>
-			        <div>
-				        <span>性别 : </span><span id="pet_sex"></span>
-			        </div>
-		        </div>
-		        <span class="hid" id="pet_id"></span>
-	        </a>
+            <a id="pet_a" style="display: flex; flex-direction: column; align-items: center; width: 150px; height: 150px; border: rgba(0, 0, 0, 0.1) 1px solid; border-radius: 10px; margin: 10px; text-decoration: none; color: black" class="card">
+                <img src="../Images/loading.png" id="pet_img" class="face" style="width: 100%; height: 100%; border-radius: 10px; border: transparent 0 solid">
+                <div class="back" style="display: flex; flex-direction: column; align-items: center; justify-items: center; margin: 10px">
+                    <div>
+                        <span>名字 : </span><span id="pet_name"></span>
+                    </div>
+                    <div>
+                        <span>性别 : </span><span id="pet_sex"></span>
+                    </div>
+                </div>
+                <span class="hid" id="pet_id"></span>
+            </a>
 
         </template>
 
         <script>
-	        function add_pet(name, sex, img, id) {
-		        let t = document.getElementById('a_help')
-		        t.content.getElementById('pet_img').src = img
-		        t.content.getElementById('pet_name').innerText = name
-		        t.content.getElementById('pet_sex').innerText = sex
-		        t.content.getElementById('pet_id').innerText = id
-		        t.content.getElementById('pet_a').setAttribute('href', '.../cn/pet?id='+id)
-		        let clone = t.content.cloneNode(true)
-		        document.getElementById('pet_container').appendChild(clone)
-	        }
-			add_pet('name', 'sex', '../Images/loading.png', '')
-	        add_pet('name', 'sex', '../Images/loading.png', '')
+            function add_pet(name, sex, img, id) {
+                let t = document.getElementById('a_help')
+                t.content.getElementById('pet_img').src = img
+                t.content.getElementById('pet_name').innerText = name
+                t.content.getElementById('pet_sex').innerText = sex
+                t.content.getElementById('pet_id').innerText = id
+                t.content.getElementById('pet_a').setAttribute('href', './pet.html?id='+id)
+                let clone = t.content.cloneNode(true)
+                document.getElementById('pet_container').appendChild(clone)
+            }
+            add_pet('name', 'sex', '../Images/loading.png', '')
+            add_pet('name', 'sex', '../Images/loading.png', '')
         </script>
 
     </body>
 
-	<!--需要后置加载的文件-->
+    <!--需要后置加载的文件-->
     <iframe src="./templates.html" id="templates" style="width: 0; height: 0; border: transparent"></iframe>
 
     <script src="./js/templates.js"></script>

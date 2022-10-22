@@ -8,6 +8,7 @@
     padding-top: 3px;
     padding-bottom: 3px;
     transition: .2s ease;
+    cursor: pointer;
 }
 
 .bt:hover {
@@ -60,4 +61,13 @@
     position: absolute;
     transition: 0.5s;
     backface-visibility: hidden;
+}
+
+.loading {
+    animation: rotate 6s linear infinite;
+}
+
+@keyframes rotate {
+    0% {transform: rotateZ(0deg)}
+    100% {transform: rotateZ(360deg)}
 }

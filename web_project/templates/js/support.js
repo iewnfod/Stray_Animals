@@ -1,47 +1,33 @@
-function GetHttpResponseInfo(url, storeInfoElementId) {
+function GetHttpRequest(url, storeInfoElementId) {
     //向指定url发送请求
     var xhr = new XMLHttpRequest()
     xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4) {
-            if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+        if (xhr.readyState === 4) {
+            if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
                 document.getElementById(storeInfoElementId).innerText = xhr.responseText
             }
         }
     }
-    //获取请求结果
-    var textinfo = getHttpInfoFromElement(storeInfoElementId)
-    //处理请求结果
-    textinfo = textinfo.search(/<body>(.|\n)*<\/body>/i)
-    return textinfo.slice(6, textinfo.length-6)
+    try {
+        xhr.open('GET', url, true)
+        xhr.send()
+    } catch (e) {
+        alert('请尝试使用edge浏览器，安装并开启cors拓展。https://microsoftedge.microsoft.com/addons/detail/cors%E8%A7%A3%E9%99%A4%E5%B0%81%E9%94%81/jcpnfhmgopmjcnofcgplmhkgeicmbhli?hl=zh-CN')
+    }
 }
 
-function getHttpInfoFromElement(storeInfoElementId) {
+function getInfoFromElement(storeInfoElementId, action, args) {
     var el = document.getElementById(storeInfoElementId)
-    if (el.innerText != '') {
+    console.log(el)
+    if (el.innerText !== '') {
         let innertext = el.innerText
-        el.innerText = ''
+        // el.innerText = ''
+        console.log(innertext)
+        action(args)
         return innertext
     } else {
-        getHttpInfoFromElement(storeInfoElementId)
+        setTimeout('getInfoFromElement', 1000, storeInfoElementId)
     }
-}
-
-function getCurrentUrl() {
-    var url = window.location.href
-    url = url.split('/')
-    url = url[0] + '/' + url[1] + '/' + url[2] + '/' + url[3]
-    return url
-}
-
-function changelan() {
-    var url = window.location.href
-    url = url.split('/')
-    if (url[3] == 'en') {
-        url[3] = 'cn'
-    } else if (url[3] == 'cn') {
-        url[3] = 'en'
-    }
-    window.location.href = url
 }
 
 function upLoadFile(fileName, binaryString) {
@@ -86,4 +72,64 @@ function getIP() {
     s.src = 'https://pv.sohu.com/cityjson?ie=utf-8'
     document.body.appendChild(s)
     return returnCitySN["cip"]
+}
+
+function getCurrentLocation() {
+    var latitude = document.createElement('span')
+    latitude.id = 'latitude'
+    latitude.style.display = 'none'
+
+    var longitude = document.createElement('span')
+    longitude.id = 'longitude'
+    longitude.style.display = 'none'
+
+    document.body.appendChild(latitude)
+    document.body.appendChild(longitude)
+
+    if (navigator.geolocation)
+    {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            console.log(position.coords.longitude, position.coords.latitude)
+            latitude.innerText = position.coords.latitude.toString()
+            longitude.innerText = position.coords.longitude.toString()
+        });
+    }
+}
+
+function change_lang(current_lang, target_lang) {
+    let current_url = window.location.href.split('cn')
+    window.location.href = '../' + target_lang + current_url[current_url.length-1]
+}
+
+function getElementByIdAndName(id, name) {
+    let arr = document.getElementsByName(name)
+    for (let i = 0; i < arr.length; i ++) {
+        if (arr[i].id === id) {
+            return arr[i]
+        }
+    }
+}
+
+
+// cookies
+
+function getCookie(key) {
+    var name = key + '='
+    var cookies = document.cookie.split(';')
+    for (let i = 0; i < cookies.length; i ++) {
+        let c = cookies[i].trim()
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length)
+        }
+    }
+    return undefined
+}
+
+function removeCookie(key) {
+    var exp = new Date()
+    exp.setTime(exp.getTime() - 1)
+    var value = getCookie(key)
+    if (value !== undefined) {
+        document.cookie = key + "=" + value + ";expires=" + exp.toGMTString()
+    }
 }

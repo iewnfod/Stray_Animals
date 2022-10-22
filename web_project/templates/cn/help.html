@@ -2,11 +2,13 @@
 <html lang="cn">
 	<head>
 		<meta charset="UTF-8">
-		<title>帮助</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+		<title>领养与帮助</title>
 		<link href="../css/menubar.css" rel="stylesheet" type="text/css">
 		<link href="../css/main.css" rel="stylesheet" type="text/css">
 		<link href="../css/font/fonts.css" rel="stylesheet" type="text/css">
 		<script src="../js/support.js"></script>
+		<script src="./js/classes.js"></script>
 		<link rel="shortcut icon" href="../Images/icon.jpeg">
 
 		<style>
@@ -20,6 +22,18 @@
 			.select_pet:hover {
 				background-color: rgba(0, 0, 0, 0.1);
 				transition: all 0.2s ease-in-out;
+			}
+			.tag {
+				background-color: rgba(0, 0, 0, 0.05);
+				border-radius: 5px;
+				font-size: 15px;
+				margin-left: 10px;
+				margin-right: 10px;
+				padding: 5px;
+			}
+			.l {
+				text-decoration: none;
+				color: black;
 			}
 		</style>
 	</head>
@@ -52,56 +66,71 @@
 				</div>
 
 				<div id="change_lang_div">
-					<button id="change_lang" class="changelan" onmousedown="window.location.href='../en/help.html'">
+					<button id="change_lang" class="changelan" onclick="change_lang('cn', 'en')">
 						<span>中 / English</span>
 					</button>
 				</div>
 
 			</div>
 
+			<div id="login">
+				<img src="../Images/person.png" class="person_img">
+			</div>
+
 		</div>
+
+		<div id="login_container" style="position: absolute; z-index: 1; width: 100%"></div>
 
 		<!--主界面-->
 		<div id="main_container">
 			<div id="toolbar" style="display: flex; flex-direction: row; align-items: center">
 
-				<select id="pet_type_selector" class="select_pet">
+				<select id="pet_type_selector" class="select_pet" onchange="change()">
 					<option value="-1">宠物类型</option>
-					<option value="1">狗狗</option>
-					<option value="0">猫猫</option>
+					<option value="狗">狗狗</option>
+					<option value="猫">猫猫</option>
 				</select>
 
-				<select id="pet_sex_selector" class="select_pet">
+				<select id="pet_sex_selector" class="select_pet" onchange="change()">
 					<option value="-1">宠物性别</option>
 					<option value="0">雄性</option>
 					<option value="1">雌性</option>
 				</select>
 
-				<button id="select_bt" class="bt" style="margin-left: 10px">确定</button>
 			</div>
 
 			<div id="all_items">
 
 			</div>
-		</div>
 
+			<div style="padding-top: 10px; margin-bottom: 10px; border-top: 1px black solid">
+				<span style="width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center">暂时没有更多啦～</span>
+			</div>
+
+			<script>
+				function change() {
+					var result = new Array()
+					let pet_type = document.getElementById('pet_type_selector').value
+					let pet_sex = document.getElementById('pet_sex_selector').value
+					for (let i = 0; i < pet_list.length; i ++) {
+						if (pet_list[i].type == pet_type || pet_type == -1) {
+							if (pet_list[i].sex == pet_sex || pet_sex == -1) {
+								result.push(pet_list[i])
+							}
+						}
+					}
+					// 清除all_items
+					document.getElementById('all_items').innerHTML = ''
+					// 重新添加
+					for (let i = 0; i < result.length; i ++) {
+						add_help_item(result[i])
+					}
+				}
+			</script>
+		</div>
 
 		<!--添加一个动物-->
 		<template id="a_help_item">
-			<style>
-				.tag {
-					background-color: rgba(0, 0, 0, 0.05);
-					border-radius: 5px;
-					font-size: 15px;
-					margin-left: 10px;
-					margin-right: 10px;
-					padding: 5px;
-				}
-				.l {
-					text-decoration: none;
-					color: black;
-				}
-			</style>
 			<a id="link" class="l">
 				<div style="border-top: black 1px solid; margin-top: 10px; padding: 10px; display: flex; flex-direction: row; align-items: center">
 					<img src="../Images/loading.png" style="width: 100px; height: 100px" id="pet_img">
@@ -123,43 +152,30 @@
 
 		<script>
 
-			class pet {
-				constructor(name, sex, img, type, id, weight, sterilization, parasite, immune) {
-					this.name = name // string
-					this.sex = sex // 0, 1, -1
-					this.img = img // url
-					this.type = type // string 猫，狗...
-					this.id = id // string
-					this.weight = weight // int
-					this.sterilization = sterilization // bool
-					this.parasite = parasite // bool
-					this.immune = immune // bool
-					this.link = "./pet/" + id
-				}
-			}
-
 			function add_help_item(p) {
 				let t = document.getElementById('a_help_item')
 				t.content.getElementById('pet_name').innerText = p.name
 				var sexl = {'0': '男', '1': '女', '-1': '未知'}
 				t.content.getElementById('pet_sex').innerText = sexl[p.sex]
-				t.content.getElementById('pet_img').setAttribute('src', p.img)
+				if (p.img !== '') {
+					t.content.getElementById('pet_img').setAttribute('src', p.img)
+				}
 				t.content.getElementById('weight').innerText = p.weight.toString() + '斤'
-				t.content.getElementById('link').setAttribute('href', p.link)
+				t.content.getElementById('link').setAttribute('href', './pet.html?id=' + p.id)
 
-				if (p.sterilization == true) {
+				if (p.sterilization) {
 					t.content.getElementById('sterilization').innerText = '已绝育'
 				} else {
 					t.content.getElementById('sterilization').innerText = '未绝育'
 				}
 
-				if (p.parasite == true) {
+				if (p.parasite) {
 					t.content.getElementById('parasite').innerText = '已驱虫'
 				} else {
 					t.content.getElementById('parasite').innerText = '未驱虫'
 				}
 
-				if (p.immune == true) {
+				if (p.immune) {
 					t.content.getElementById('immune').innerText = '已免疫'
 				} else {
 					t.content.getElementById('immune').innerText = '未免疫'
@@ -169,7 +185,7 @@
 				document.getElementById('all_items').appendChild(clone)
 			}
 
-			pet_list = new Array()
+			var pet_list = new Array()
 			// pet(name: string, sex: int, img: string, type: string, id: string, weight: int, sterilization: bool, parasite: bool, immune: bool)
 			pet_list.push(new pet('福福', '0', '', '狗', '1', 20, true, true, true))
 			pet_list.push(new pet('核桃', '1', '', '狗', '1', 18, true, true, true))
@@ -182,7 +198,7 @@
 			pet_list.push(new pet('小乖', '1', '', '狗', '1', 38, true, true, true))
 			pet_list.push(new pet('纸板', '0', '', '狗', '1', 22, true, true, true))
 			pet_list.push(new pet('涯妹', '1', '', '狗', '1', 12, true, true, true))
-			pet_list.push(new pet('小新', '1', '', '狗', '1', , 10true, true, true))
+			pet_list.push(new pet('小新', '1', '', '狗', '1', 10, true, true, true))
 
 			for (var i = 0; i < pet_list.length; i ++) {
 				add_help_item(pet_list[i])
@@ -190,10 +206,12 @@
 
 		</script>
 
-		<div style="background-color: rgba(0, 0, 0, 0.1); border-top: rgba(0, 0, 0, 0.5) 1px solid; width:100%; display: flex; flex-direction: column; align-items: center;">
-			<span class="last_info">若有任何问题或想要加入我们，请发送邮件到我们的邮箱</span>
-			<span class="last_info">联系邮箱: rt227919512@163.com</span>
-		</div>
-
 	</body>
+
+	<!--需要后置加载的文件-->
+	<iframe src="./templates.html" id="templates" style="width: 0; height: 0; border: transparent"></iframe>
+
+	<script src="./js/templates.js"></script>
+
+
 </html>
