@@ -34,6 +34,8 @@ https://.../{cn/en}/{main/interview/shop/map/help}.html
 5. /help.html 领养与帮助
 ...
 
+* ./getUserData?id=... --> {id: ...; username: ...; userimg: ...}
+
 ---
 
 # 更多工具
