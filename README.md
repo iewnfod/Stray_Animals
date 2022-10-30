@@ -35,6 +35,7 @@ https://.../{cn/en}/{main/interview/shop/map/help}.html
 ...
 
 * ./getUserData?name=... --> {id: ...; username: ...; userimg: ...}
+* ./getPetData?id=... --> {id: ...; name: ...; img: ...; ...}
 
 ---
 
