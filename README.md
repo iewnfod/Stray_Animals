@@ -20,11 +20,6 @@
 
 ---
 
-# SuperUser
-1. muyunxi : 060828000615000507
-
----
-
 # 全部接口
 https://.../{cn/en}/{main/interview/shop/map/help}.html
 1. /index.html 主入口
