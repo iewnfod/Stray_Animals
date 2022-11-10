@@ -17,7 +17,9 @@ function logout() {
     removeCookie('loginTime')
 }
 
-refresh_user()
-if (getCookie('id') === undefined) {
-    window.history.back()
+function login_check() {
+    refresh_user()
+    if (getCookie('id') === undefined) {
+        window.history.back()
+    }
 }
