@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ch">
+    <head>
+        <meta charset="UTF-8">
+        <title>个人中心</title>
+        <script src="../js/support.js"></script>
+        <script src="../js/main.js"></script>
+        <link rel="shortcut icon" href="../Images/icon.jpeg">
+        <link href="../css/main.css" rel="stylesheet" type="text/css">
+        <link href="../css/font/fonts.css" rel="stylesheet" type="text/css">
+        <style>
+            .info_box {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+                margin: 10px;
+                width: 70%;
+                box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+                border-radius: 10px
+            }
+        </style>
+    </head>
+
+    <body style="height: 100%; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center">
+        <!--个人信息 + 退出登录-->
+        <div class="info_box">
+            <div id="left" style="display: flex; flex-direction: row; justify-content: center; align-items: flex-start; margin: 10px">
+                <div id="img" style="border-radius: 50%; border: 1px black solid; padding: 1px; height: 100px">
+                    <img src="../Images/person.png" style="height: 100%" id="person_img">
+                </div>
+                <div id="info" style="display: flex; flex-direction: column; margin: 10px; padding: 10px">
+                    <span style="font-size: large; margin-bottom: 10px">Name</span>
+                    <span style="font-size: small">邮箱: </span>
+                </div>
+            </div>
+
+            <div id="right">
+                <button onclick="logout(); location.href = './index.html'" class="bt">退出登录</button>
+            </div>
+        </div>
+    </body>
+</html>

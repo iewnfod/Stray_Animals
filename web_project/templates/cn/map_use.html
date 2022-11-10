@@ -16,10 +16,24 @@
             html{height:100%}
             body{height:100%;margin:0;padding:0}
             #container{height:95%; left: 0; right: 0; bottom: 0; top: 0; margin: 0; padding: 0}
+            .info_block {
+                top: 0;
+                left: 0;
+                display: flex;
+                border-radius: 10px;
+                border: 0;
+                background-color: rgba(0, 0, 0, .1);
+                position: absolute;
+                z-index: 1;
+                width: 30%;
+                padding: 10px;
+                transition: 5s ease-in-out;
+            }
         </style>
 
         <script type="text/javascript">
             window._AMapSecurityConfig = {
+                // serviceHost:'./_AMapService',
                 securityJsCode:'a6073c64dd3aefec077fba55e1f630f8',
             }
         </script>
@@ -27,11 +41,14 @@
 
         <script src="../js/support.js"></script>
         <script src="../js/map.js"></script>
-        <span id="location" style="display: none"></span>
     </head>
 
     <body>
         <div id="container"></div>
+        <div class="info_block" id="info_block">
+            <span id="status"></span>
+            <span id="result"></span>
+        </div>
     </body>
 
     <script>
@@ -55,13 +72,16 @@
 
             map.addControl(geolocation);
             geolocation.getCurrentPosition(function(status,result){
+                document.getElementById('info_block').style.opacity = '1'
                 if(status=='complete'){
                     onComplete(result)
                 }else{
                     onError(result)
                 }
+                document.getElementById('info_block').style.opacity = '0'
             })
         })
+
         //解析定位结果
         function onComplete(data) {
             document.getElementById('status').innerHTML='定位成功'
@@ -78,6 +98,12 @@
         function onError(data) {
             document.getElementById('status').innerHTML='定位失败'
             document.getElementById('result').innerHTML = '失败原因排查信息:'+data.message
+        }
+
+        function logMapBounds() {
+            var bounds = map.getBounds()
+            var northeast = bounds.northeast.split(',')
+            var southwest = bounds.southwest.split(',')
         }
 
     </script>

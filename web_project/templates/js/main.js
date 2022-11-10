@@ -1,8 +1,11 @@
 function refresh_user() {
     if (getCookie('loginTime') !== undefined) {
-        if (getCookie('loginTime') >= new Date().getTime())
-        if (getCookie('userimg') !== undefined) {
-            document.getElementById('person_img').setAttribute('src', getCookie('userimg'))
+        if (getCookie('loginTime') >= new Date().getTime()) {
+            if (getCookie('userimg') !== undefined) {
+                document.getElementById('person_img').setAttribute('src', getCookie('userimg'))
+            }
+        } else {
+            logout()
         }
     }
 }
@@ -12,4 +15,9 @@ function logout() {
     removeCookie('id')
     removeCookie('username')
     removeCookie('loginTime')
+}
+
+refresh_user()
+if (getCookie('id') === undefined) {
+    window.history.back()
 }

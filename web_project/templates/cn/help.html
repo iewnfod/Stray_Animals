@@ -18,10 +18,12 @@
 				padding: 5px;
 				background-color: transparent;
 				border-radius: 5px;
+				transition: all 0.2s ease-in-out;
+				overflow: hidden;
 			}
 			.select_pet:hover {
 				background-color: rgba(0, 0, 0, 0.1);
-				transition: all 0.2s ease-in-out;
+				overflow: auto;
 			}
 			.tag {
 				background-color: rgba(0, 0, 0, 0.05);
@@ -93,8 +95,8 @@
 
 				<select id="pet_sex_selector" class="select_pet" onchange="change()">
 					<option value="-1">宠物性别</option>
-					<option value="0">雄性</option>
-					<option value="1">雌性</option>
+					<option value="0">男</option>
+					<option value="1">女</option>
 				</select>
 
 			</div>
@@ -212,6 +214,5 @@
 	<iframe src="./templates.html" id="templates" style="width: 0; height: 0; border: transparent"></iframe>
 
 	<script src="./js/templates.js"></script>
-
 
 </html>

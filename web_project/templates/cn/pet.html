@@ -61,6 +61,17 @@
 
         <div id="login_container" style="position: absolute; z-index: 1; width: 100%"></div>
 
+        <div id="main">
+
+        </div>
+
+        <span id="data" style="display: none"></span>
+
+    <script>
+        let pet_id = getQueryVariable('id')
+        GetHttpRequest('./getPetData?id='+pet_id, 'data')
+    </script>
+
     </body>
     <!--需要后置加载的文件-->
     <iframe src="./templates.html" id="templates" style="width: 0; height: 0; border: transparent"></iframe>

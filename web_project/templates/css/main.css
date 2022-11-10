@@ -71,3 +71,15 @@
     0% {transform: rotateZ(0deg)}
     100% {transform: rotateZ(360deg)}
 }
+
+img {
+    object-fit: contain;
+}
+
+.open_close_button {
+    width: 50px;
+    height: 24px;
+    border-radius: 500px;
+    background-image: linear-gradient(to right, #4B4B4B, #111111);
+    box-shadow: inset 10px 0 10px #171717, inset -10px 0 10px #494949;
+}

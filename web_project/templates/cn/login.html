@@ -19,12 +19,16 @@
                 cursor: pointer;
             }
             .main_input {
-                width: 300px; 
+                width: 300px;
                 height: 25px;
                 border: 1px solid rgb(199, 193, 193);
                 border-radius: 5px;
                 padding-left: 10px;
                 padding-right: 10px;
+                transition: 0.2s ease-in-out;
+            }
+            .main_input:hover .main_input:focus {
+                border: 1px solid rgba(170, 170, 170);
             }
             .main_input_div {
                 display: flex;
@@ -74,7 +78,7 @@
 
                 <div style="margin-top: 10px;">
                     <button class="main_bt" id="login_button" onmouseover="this.style.backgroundColor='gainsboro' " onmouseleave="this.style.backgroundColor='' ">登录</button>
-                    <button class="main_bt" id="register_button" onmouseover="this.style.backgroundColor='gainsboro' " onmouseleave="this.style.backgroundColor='' ">注册并登录</button>
+                    <button class="main_bt" id="register_button" onmouseover="this.style.backgroundColor='gainsboro' " onmouseleave="this.style.backgroundColor='' ">注册</button>
                 </div>
             </div>
             <span id="status" class="hid"></span>
@@ -120,12 +124,12 @@
         function send_verification() {
             var tel = document.getElementById("phonenumber").value
             if (tel !== "") {
-                sendGetResponse(url+"verification/tel/getcode/?tel=" + tel)
+                sendGetResponse(url + "verification/tel/getcode/?tel=" + tel)
                 change_verification_time()
                 document.getElementById("verification_button").removeEventListener('click', send_verification)
             }
         }
-        
+
         var remaining_time = 60
 
         function change_verification_time() {
