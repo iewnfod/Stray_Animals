@@ -89,7 +89,7 @@ img {
 }
 
 .bg {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background: url("../Images/bg.jpg");
