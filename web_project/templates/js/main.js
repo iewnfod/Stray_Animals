@@ -28,3 +28,14 @@ function search() {
     let value = document.getElementById('search_input').value
     console.log(value)
 }
+
+function add_bg() {
+    let bg = document.createElement('div')
+    bg.className = 'bg'
+    document.body.append(bg)
+}
+
+// 添加背景
+window.onload = function () {
+    add_bg()
+}
