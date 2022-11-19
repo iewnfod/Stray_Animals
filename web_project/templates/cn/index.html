@@ -20,6 +20,8 @@
 
     <body>
 
+        <div class="bg"></div>
+
         <div id="top" style="display: flex; flex-direction: row; justify-content: space-around; align-items: center">
             <!--img-->
             <img src="../Images/icon.jpeg" style="height: 50px; width: 50px; margin-left: 10px">
@@ -52,7 +54,12 @@
 
             </div>
 
-            <div id="login">
+            <div style="margin: 10px; width: 40%; display: flex; flex-direction: row; justify-content: center">
+                <input placeholder="输入搜索" class="search_input" type="text" id="search_input" onchange="search()">
+                <img src="../Images/search.png" style="width: 5%; margin-left: 10px; margin-right: 20px">
+            </div>
+
+            <div id="login" style="margin-right: 10px">
                 <img src="../Images/person.png" class="person_img" id="person_img">
             </div>
 
@@ -165,7 +172,7 @@
     </body>
 
     <!--需要后置加载的文件-->
-    <iframe src="./templates.html" id="templates" style="width: 0; height: 0; border: transparent"></iframe>
+    <iframe src="./templates.html" id="templates" class="login_template"></iframe>
 
     <script src="./js/templates.js"></script>
     <script>

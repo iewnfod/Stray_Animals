@@ -23,3 +23,8 @@ function login_check() {
         window.history.back()
     }
 }
+
+function search() {
+    let value = document.getElementById('search_input').value
+    console.log(value)
+}

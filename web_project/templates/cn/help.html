@@ -75,6 +75,11 @@
 
 			</div>
 
+			<div style="margin: 10px; width: 40%; display: flex; flex-direction: row; justify-content: center">
+				<input placeholder="输入搜索" class="search_input" type="text" id="search_input" onchange="search()">
+				<img src="../Images/search.png" style="width: 5%; margin-left: 10px; margin-right: 20px">
+			</div>
+
 			<div id="login">
 				<img src="../Images/person.png" class="person_img">
 			</div>
@@ -211,7 +216,7 @@
 	</body>
 
 	<!--需要后置加载的文件-->
-	<iframe src="./templates.html" id="templates" style="width: 0; height: 0; border: transparent"></iframe>
+	<iframe src="./templates.html" id="templates" class="login_template"></iframe>
 
 	<script src="./js/templates.js"></script>
 
