@@ -33,25 +33,32 @@
 					<!--menubar-->
 					<div id="menu_bar" class="menubar">
 
-						<span id="index" class="menubarItem" onmousedown="window.location.href = './index.html'">首页</span>
+						<div id="index_div" class="menubarDiv">
+							<span id="index" class="menubarItem" onmousedown="window.location.href = './index.html'">首页</span>
+							<div class="menubarBottom" id="indexBottom"></div>
+						</div>
 
 						<div id="interview_div" class="menubarDiv">
 							<span id="interview" class="menubarItem" onmousedown="window.location.href = './interview.html'">采访与博客</span>
+							<div class="menubarBottom" id="interviewBottom"></div>
 						</div>
 
 						<div id="shop_div" class="menubarDiv">
 							<span id="shop" class="menubarItem" onmousedown="window.location.href = './shop.html'">商城</span>
+							<div class="menubarBottom" id="shopBottom"></div>
 						</div>
 
 						<div id="map_div" class="menubarDiv">
 							<span id="map" class="menubarItem" onmousedown="window.location.href = './map.html'">地图</span>
+							<div class="menubarBottom" id="mapBottom"></div>
 						</div>
 
 						<div id="help_div" class="menubarDiv">
 							<span id="help" class="menubarItem" onmousedown="window.location.href = './help.html'" style="margin-right: 10px">领养与帮助</span>
+							<div class="menubarBottom" id="helpBottom"></div>
 						</div>
 
-						<div id="change_lang_div">
+						<div id="change_lang_div" style="margin-left: 10px">
 							<button id="change_lang" class="changelan" onclick="change_lang('cn', 'en')">
 								<span>中 / English</span>
 							</button>
@@ -61,7 +68,7 @@
 
 					<div style="margin: 10px; width: 40%; display: flex; flex-direction: row; justify-content: center">
 						<input placeholder="输入搜索" class="search_input" type="text" id="search_input" onchange="search()">
-						<img src="../Images/search.png" class="search_img">
+						<img src="../Images/search.png" class="search_img" onclick="search()">
 					</div>
 
 					<div id="login" style="margin-right: 10px">

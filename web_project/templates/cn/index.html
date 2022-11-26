@@ -16,6 +16,26 @@
         <link href="../css/menubar.css" rel="stylesheet" type="text/css">
         <link href="../css/main.css" rel="stylesheet" type="text/css">
         <link href="../css/font/fonts.css" rel="stylesheet" type="text/css">
+        <style>
+            .passage_deceiver {
+                margin: 20px;
+                padding: 10px;
+                background-color: transparent;
+                box-shadow: none;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: 5px;
+                transition: all .2s ease-in-out;
+            }
+            .passage_deceiver:hover {
+                box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.3);
+                border-color: #eee;
+            }
+            .title {
+                word-wrap: break-word;
+                word-break: normal;
+                width: 300px;
+            }
+        </style>
     </head>
 
     <body>
@@ -30,34 +50,15 @@
 <!--                    </div>-->
                 </div>
             </div>
-            <div style="background-color: rgba(0, 0, 0, 0.1); border-top: rgba(0, 0, 0, 0.1) 1px solid; width:100%; display: flex; flex-direction: column; align-items: center;">
-                <span class="last_info">若有任何问题或投诉或想要加入我们，请发送邮件到我们的邮箱</span>
-                <span class="last_info">联系邮箱: strayanimal@163.com</span>
-            </div>
+        </div>
+
+        <div style="background-color: rgba(0, 0, 0, 0.1); border-top: rgba(0, 0, 0, 0.1) 1px solid; width:100%; display: flex; flex-direction: column; align-items: center; bottom: 0; position: absolute; left: 0; padding-bottom: 5px">
+            <span class="last_info">若有任何问题或投诉或想要加入我们，请发送邮件到我们的邮箱</span>
+            <span class="last_info">联系邮箱: strayanimal@163.com</span>
         </div>
 
         <!--一篇文章-->
         <template id="a_passage">
-            <style>
-                .passage_deceiver {
-                    margin: 20px;
-                    padding: 10px;
-                    background-color: transparent;
-                    box-shadow: none;
-                    border: 1px solid rgba(0, 0, 0, 0.1);
-                    border-radius: 5px;
-                }
-                .passage_deceiver:hover {
-                    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.3);
-                    border-color: #eee;
-                    transition: all .2s ease-in-out;
-                }
-                .title {
-                    word-wrap: break-word;
-                    word-break: normal;
-                    width: 300px;
-                }
-            </style>
             <div class="passage_deceiver">
                 <a id="passage_a" style="display: flex; flex-direction: row; justify-content: center; text-decoration: none">
                     <div id="title_container" style="display: flex; flex-direction: column; margin: 10px">

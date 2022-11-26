@@ -24,9 +24,26 @@ function add_menu() {
     menu.innerHTML = templates.document.getElementById('menu').innerHTML
     let url = location.href.split('/')
     let end = url[url.length-1].split('?')[0].split('.')[0]
-    console.log(menu)
+    // console.log(menu)
 
     document.body.insertBefore(menu, document.body.children[0])
 
-    document.getElementById(end).style.borderBottom = '2px solid black'
+    document.getElementById(end+'Bottom').style.width = '90%'
+
+    let menubar_items = ['index', 'interview', 'shop', 'map', 'help']
+    // 添加事件
+    for (let i = 0; i < menubar_items.length; i ++) {
+        if (menubar_items[i] !== end) {
+            document.getElementById(menubar_items[i]).addEventListener('mouseenter', function (e) {
+                // console.log(e)
+                let el = e.target
+                document.getElementById(el.id+'Bottom').style.animation = 'showMenubarBottom .3s forwards'
+            })
+            document.getElementById(menubar_items[i]).addEventListener('mouseleave', function (e) {
+                // console.log(e)
+                let el = e.target
+                document.getElementById(el.id+'Bottom').style.animation = 'removeMenubarBottom .3s forwards'
+            })
+        }
+    }
 }
