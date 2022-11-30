@@ -6,7 +6,7 @@ class log():
         self.name = log_name
         self.log_path = os.path.join(log_path, f'{log_name}.log')
         self.type = {0: 'INFO', 1: 'WARNING', 2: 'ERROR', 3: 'FATAL'}
-        self.color_type = {0: '', 1: '\033[0;37;43m', 2: '\033[0;37;41m', 3: '\033[0;37;41m'}
+        self.color_type = {0: '', 1: '\033[0;30;43m', 2: '\033[0;37;41m', 3: '\033[0;37;41m'}
         self.color_end = '\033[0m'
         self.time_color = '\x1B[3m'
         self.time_color_end = '\x1B[0m'
