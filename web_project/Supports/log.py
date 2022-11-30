@@ -25,7 +25,7 @@ class log():
     def add_log(self, info:str, level:int = 0): # level: 0 普通；1 警告；2 错误；3 致命错误
         if level in self.type.keys():
             current_time = self.get_time()
-            log_content = current_time + '    ' + '[' + self.type[level] + ']' + ' ' * (self.max_type_length - len(self.type[level])) + info + '\n'
+            log_content = current_time + '    ' + '[' + self.type[level] + '] ' + ' ' * (self.max_type_length - len(self.type[level])) + info + '\n'
             with open(self.log_path, 'a') as f:
                 f.writelines(log_content)
             self.output_log(current_time, info, level)
@@ -43,7 +43,7 @@ class log():
             self.add_log(f'Add New Log Level: "{new_level_name}" with Index: "{new_level_index}"')
 
         else:
-            self.add_log('Log Error : The new Log Level has already exists!', 2)
+            self.add_log('Log Warning : The new Log Level has already exists!', 2)
 
     def output_log(self, current_time:str, info:str, level:int):
         # 输出日期
@@ -51,6 +51,6 @@ class log():
         print('    ', end='')
         # 输出等级
         print(self.color_type[level] + self.type[level] + self.color_end, end='')
-        print(' '*(self.max_type_length-len(self.type[level])), end='')
+        print(' '*(self.max_type_length-len(self.type[level])) + ' ', end='')
         # 输出内容
         print(info)
