@@ -46,9 +46,7 @@ loginTime:
 
 # 更多工具
 
-* 获取百度坐标: https://api.map.baidu.com/lbsapi/getpoint/index.html
-
-* 测试: anywhere (安装 node.js; MacOS/Linux:[sudo npm install anywhere -g] Windows:自己查吧!!!)
+* 测试: anywhere (安装 node.js; MacOS/Linux:[sudo npm install anywhere -g] Windows:自己查吧!!!) 或者直接nginx反向代理也行
 
 * 高德地图: https://lbs.amap.com/api/javascript-api/summary
 
