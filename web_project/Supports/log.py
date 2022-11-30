@@ -2,8 +2,9 @@ import os
 import time
 
 class log():
-    def __init__(self, log_path):
-        self.log_path = os.path.join(log_path, 'log.log')
+    def __init__(self, log_path, log_name):
+        self.name = log_name
+        self.log_path = os.path.join(log_path, f'{log_name}.log')
         self.type = {0: 'INFO', 1: 'WARNING', 2: 'ERROR', 3: 'FATAL'}
         self.color_type = {0: '', 1: '\033[0;37;43m', 2: '\033[0;37;41m', 3: '\033[0;37;41m'}
         self.color_end = '\033[0m'
@@ -16,7 +17,7 @@ class log():
         else:
             with open(self.log_path, 'w') as f:
                 pass
-        self.add_log('Start to Log!!!')
+        self.add_log(f'Start to Log "{log_name}" !!!')
 
     def get_time(self, _format='%Y-%m-%d %H:%M:%S'):
         return time.strftime(_format, time.localtime())
