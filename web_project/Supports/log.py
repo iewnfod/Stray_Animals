@@ -35,12 +35,13 @@ class log():
 
     def add_log_level(self, new_level_index:int, new_level_name:str, color_type:str='\033[0;37;41m'):
         if new_level_index not in self.type.keys()and new_level_name not in self.type.values():
-            if len(new_level_name) < self.max_type_length - 4:
-                self.type[new_level_index] = new_level_name
-                self.color_type[new_level_index] = color_type
-                self.add_log(f'Add New Log Level: "{new_level_name}" with Index: "{new_level_index}"')
-            else:
-                self.add_log('Log Error : The new Log name is Too Long. ', 2)
+            if len(new_level_name) >= self.max_type_length - 4:
+                self.add_log('Log Error : The new Log Name is Too Long. ', 1)
+
+            self.type[new_level_index] = new_level_name
+            self.color_type[new_level_index] = color_type
+            self.add_log(f'Add New Log Level: "{new_level_name}" with Index: "{new_level_index}"')
+
         else:
             self.add_log('Log Error : The new Log Level has already exists!', 2)
 
