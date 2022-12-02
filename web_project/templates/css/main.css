@@ -25,20 +25,6 @@
     border: transparent 0;
 }
 
-.person_img {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    border: rgba(0, 0, 0, 0.1) 1px solid;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-.person_img:hover {
-    border: rgba(0, 0, 0, 0.2) 2px solid;
-    transition: all .2s ease-in-out;
-}
-
 .card {
     perspective: 500px;
     cursor: pointer;
@@ -100,11 +86,4 @@ img {
     background-size: 100% 100%;
     background-attachment: fixed;
     z-index: -1;
-}
-
-.search_img {
-    cursor: pointer;
-    width: 5%;
-    margin-left: 10px;
-    margin-right: 20px;
 }

@@ -51,8 +51,29 @@ window.onload = function () {
     // 添加背景
     add_bg()
 
+    // 刷新用户
+    refresh_user()
+
     // after all
     after_all()
 
-    refresh_user()
+    // 添加动画核心
+    let animation_core = document.createElement('script')
+    animation_core.src = '../js/animation_core.js'
+    document.head.append(animation_core)
+
+    // 添加动画
+    animation_core.onload = function () {
+        // 需要等待动画核心加载完成
+        let animation = document.createElement('script')
+        animation.src = '../js/animation.js'
+        document.head.append(animation)
+    }
 }
+
+document.addEventListener('error', function (e) {
+    let elem = e.target
+    if (elem.tagName.toLowerCase() === 'img') {
+        elem.src = '../Images/loading_error.png'
+    }
+}, true)

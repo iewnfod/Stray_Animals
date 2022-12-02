@@ -48,6 +48,30 @@ function upLoadFile(fileName, binaryString) {
     return temp
 }
 
+function upload(file, target_url) {
+    let up = new XMLHttpRequest()
+    up.onloadstart = function () {
+        console.log("Start upload")
+    }
+    up.onprogress = function (e) {
+        let percent = e.loaded / e.total
+        console.log(percent)
+    }
+    up.onloadend = function () {
+        console.log("Upload finish")
+    }
+    up.onload = function () {
+        console.log("Upload successfully")
+    }
+    up.onerror = function () {
+        console.log("Upload enters an error")
+    }
+    up.ontimeout = function () {
+        console.log("Upload time out")
+    }
+}
+
+
 function PostHttpRequest(url, values) {
     var temp = document.createElement('form')
     temp.action = url
