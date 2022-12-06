@@ -1,3 +1,7 @@
+body {
+    height: 100%;
+}
+
 .bt {
     padding-left: 10px;
     padding-right: 10px;
@@ -86,4 +90,44 @@ img {
     background-size: 100% 100%;
     background-attachment: fixed;
     z-index: -1;
+}
+
+.message_box {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    animation: message_box_animation 5s forwards;
+    background: red;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.5);
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: .5s;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+@keyframes message_box_animation {
+    0% {
+        top: 5%;
+        opacity: 0;
+    }
+    20% {
+        top: 10%;
+        background: rgba(248, 55, 55, 0.9);
+        opacity: 1;
+    }
+    90% {
+        top: 10%;
+        background: rgba(248, 55, 55, 0.9);
+        opacity: 1;
+    }
+    100% {
+        top: 10%;
+        opacity: 0;
+    }
 }

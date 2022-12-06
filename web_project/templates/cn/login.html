@@ -27,8 +27,12 @@
                 padding-right: 10px;
                 transition: 0.2s ease-in-out;
             }
-            .main_input:hover .main_input:focus {
-                border: 1px solid rgba(170, 170, 170);
+            .main_input:hover {
+                border: 1px solid black;
+            }
+            .main_input:focus {
+                outline: none;
+                border: 1px solid black;
             }
             .main_input_div {
                 display: flex;
@@ -62,16 +66,17 @@
 <!--                    <span>电话号码:</span>-->
 <!--                    <input type="tel" id="phonenumber" class="main_input">-->
 <!--                </div>-->
-<!--                <div class="main_input_div">-->
-<!--                    <span>验证码:</span>-->
-<!--                    <div>-->
-<!--                        <input type="text" id="verification" class="main_input" style="width: 190px;">-->
-<!--                        <button class="main_bt" id="verification_button" style="width: 100px;" onmouseover="this.style.backgroundColor='gainsboro' "; onmouseleave="this.style.backgroundColor='' ">获取验证码</button>-->
-<!--                    </div>-->
-<!--                </div>-->
                 <div class="main_input_div">
                     <span>邮箱:</span>
                     <input type="email" id="email" class="main_input">
+                </div>
+
+                <div class="main_input_div">
+                    <span>验证码:</span>
+                    <div>
+                        <input type="text" id="verification" class="main_input" style="width: 190px;">
+                        <button class="main_bt" id="verification_button" style="width: 100px;" onmouseover="this.style.backgroundColor='gainsboro' " onmouseleave="this.style.backgroundColor='' ">获取验证码</button>
+                    </div>
                 </div>
 
                 <span style="font-size: small; margin-top: 10px;" id="tips"></span>
@@ -85,14 +90,13 @@
             <span id="alert_message" class="hid"></span>
         </div>
     </body>
-
     <script>
-        var url = window.location.href
+        let url = window.location.href
         url = url.split('/')
         url = url[0] + '/' + url[1] + '/' + url[2] + '/' + url[3]
 
         function sendGetResponse(url) {
-            var getresponse = new XMLHttpRequest()
+            let getresponse = new XMLHttpRequest()
             getresponse.onreadystatechange = function() {
                 if (getresponse.readyState === 4 && getresponse.status === 200) {
                     document.getElementById("status").innerText = getresponse.responseText
@@ -148,7 +152,7 @@
         document.getElementById("login_button").addEventListener('click', function() {
             var name = document.getElementById("username").value
             var password = document.getElementById("password").value
-            if (name != "" && password != "") {
+            if (name !== "" && password !== "") {
                 sendGetResponse(url+"login/login/?name="+name+"&password="+password)
                 document.getElementById("alert_message").innerText = "错误: \n用户名或密码错误!"
                 gettomainpage()
@@ -164,7 +168,7 @@
                 alert("用户名及密码均需小于20位!")
                 return
             }
-            if (name != "" && password != "" && tel != "" && code != "") {
+            if (name !== "" && password !== "" && tel !== "" && code !== "") {
                 sendGetResponse(url+"login/register/?name="+name+"&password="+password+"&tel="+tel+"&code="+code)
                 document.getElementById("alert_message").innerText = "错误(可能原因): \n该用户名或电话号码已被注册!\n验证码错误!"
                 gettomainpage()

@@ -35,6 +35,11 @@ function add_bg() {
     document.body.append(bg)
 }
 
+// 添加额外信息
+document.write('<link href="../css/addition.css" type="text/css" rel="stylesheet">')
+document.write('<script src="../js/addition.js"></script>')
+
+
 window.onload = function () {
     // let login_frame = document.createElement('iframe')
     // login_frame.src = './templates.html'
@@ -54,8 +59,8 @@ window.onload = function () {
     // 刷新用户
     refresh_user()
 
-    // after all
-    after_all()
+    // login bind
+    login_bind()
 
     // 添加动画核心
     let animation_core = document.createElement('script')
@@ -69,6 +74,15 @@ window.onload = function () {
         animation.src = '../js/animation.js'
         document.head.append(animation)
     }
+
+    // 修改搜索图片高度
+    document.getElementById('search_img').style.height = document.getElementById('search_input').offsetHeight * 0.8 + 'px'
+
+    // 监听窗口变化
+    window.onresize = function () {}
+
+    // 下雪效果
+    snow()
 }
 
 document.addEventListener('error', function (e) {

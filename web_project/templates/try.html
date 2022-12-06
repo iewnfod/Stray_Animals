@@ -1,29 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="ch">
 	<head>
 		<meta charset="UTF-8">
 		<script src="js/support.js"></script>
+		<link href="css/addition.css" type="text/css" rel="stylesheet">
+		<title>Try</title>
 	</head>
 	<body>
-		<!--读取文件-->
-		<input type="file" id="file">
-		<span id="dom"></span>
-		<script>
-			document.getElementById('file').onchange = function () {
-				console.dir(this.files)
-				let fileOne = this.files
-				for (let i = 0; i < fileOne.length; i ++) {
-					let newFile = new FileReader()
-					console.log(fileOne[i])
-					newFile.readAsBinaryString(fileOne[i])
-					newFile.onload = function () {
-						let result = this.result
-						console.log(result)
-						document.getElementById('dom').innerText = result
-					}
-				}
-			}
-		</script>
-
+		<script src="js/addition.js"></script>
+		<script>snow()</script>
 	</body>
 </html>

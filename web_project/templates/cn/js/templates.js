@@ -1,11 +1,12 @@
-var login_window_exist = false
+let login_window_exist = false
 
-var templates = document.getElementById('templates').contentWindow
+let templates = document.getElementById('templates').contentWindow
 
-function after_all() {
+// login bind
+function login_bind() {
     document.getElementById('login').addEventListener('click', function () {
         refresh_user()
-        if (getCookie('id') !== undefined) {
+        if (getCookie('id') === undefined) {
             if (login_window_exist === false) {
                 let t = templates.document.getElementById('login_frame')
                 let clone = t.content.cloneNode(true)

@@ -69,6 +69,7 @@ button {
     border-radius: 5px;
     border: rgba(0, 0, 0, .1) 1px solid;
     transition: .2s ease;
+    height: 90%;
 }
 
 .search_input:hover {
@@ -78,6 +79,12 @@ button {
 .search_input:focus {
     outline: none;
     border: rgba(0, 0, 0, .5) 1px solid;
+}
+
+.search_img {
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 20px;
 }
 
 @keyframes showMenubarBottom {
@@ -96,13 +103,6 @@ button {
     100% {
         width: 0;
     }
-}
-
-.search_img {
-    cursor: pointer;
-    width: 4%;
-    margin-left: 10px;
-    margin-right: 20px;
 }
 
 .person_img {

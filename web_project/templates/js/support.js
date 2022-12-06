@@ -1,6 +1,6 @@
 function GetHttpRequest(url, storeInfoElementId) {
     //向指定url发送请求
-    var xhr = new XMLHttpRequest()
+    let xhr = new XMLHttpRequest()
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
@@ -17,7 +17,7 @@ function GetHttpRequest(url, storeInfoElementId) {
 }
 
 function getInfoFromElement(storeInfoElementId, action, args) {
-    var el = document.getElementById(storeInfoElementId)
+    let el = document.getElementById(storeInfoElementId)
     console.log(el)
     if (el.innerText !== '') {
         let innertext = el.innerText
@@ -32,14 +32,14 @@ function getInfoFromElement(storeInfoElementId, action, args) {
 
 function upLoadFile(fileName, binaryString) {
     let url = getCurrentUrl() + '/upload'
-    var temp = document.createElement('form')
+    let temp = document.createElement('form')
     temp.action = url
     temp.method = 'post'
     temp.style.display = 'none'
-    var file = document.createElement('textarea')
+    let file = document.createElement('textarea')
     file.name = 'file'
     file.value = binaryString
-    var file_name = document.createElement('textarea')
+    let file_name = document.createElement('textarea')
     file_name.value = fileName
     temp.appendChild(file)
     temp.appendChild(file_name)
@@ -73,7 +73,7 @@ function upload(file, target_url) {
 
 
 function PostHttpRequest(url, values) {
-    var temp = document.createElement('form')
+    let temp = document.createElement('form')
     temp.action = url
     temp.method = 'post'
     temp.style.display = 'none'
@@ -92,18 +92,18 @@ function PostHttpRequest(url, values) {
 }
 
 function getIP() {
-    var s = document.createElement('script')
+    let s = document.createElement('script')
     s.src = 'https://pv.sohu.com/cityjson?ie=utf-8'
     document.body.appendChild(s)
     return returnCitySN["cip"]
 }
 
 function getCurrentLocation() {
-    var latitude = document.createElement('span')
+    let latitude = document.createElement('span')
     latitude.id = 'latitude'
     latitude.style.display = 'none'
 
-    var longitude = document.createElement('span')
+    let longitude = document.createElement('span')
     longitude.id = 'longitude'
     longitude.style.display = 'none'
 
@@ -138,11 +138,11 @@ function getElementByIdAndName(id, name) {
 // cookies
 
 function getCookie(key) {
-    var name = key + '='
-    var cookies = document.cookie.split(';')
+    let name = key + '='
+    let cookies = document.cookie.split(';')
     for (let i = 0; i < cookies.length; i ++) {
         let c = cookies[i].trim()
-        if (c.indexOf(name) == 0) {
+        if (c.indexOf(name) === 0) {
             return c.substring(name.length, c.length)
         }
     }
@@ -150,22 +150,50 @@ function getCookie(key) {
 }
 
 function removeCookie(key) {
-    var exp = new Date()
+    let exp = new Date()
     exp.setTime(exp.getTime() - 1)
-    var value = getCookie(key)
+    let value = getCookie(key)
     if (value !== undefined) {
         document.cookie = key + "=" + value + ";expires=" + exp.toGMTString()
     }
 }
 
 function getQueryVariable(variable) {
-    var query = window.location.search.substring(1);
-    var vars = query.split("&")
-    for (var i=0; i<vars.length; i++) {
-        var pair = vars[i].split("=")
-        if(pair[0] == variable){
+    let query = window.location.search.substring(1);
+    let vars = query.split("&")
+    for (let i=0; i<vars.length; i++) {
+        let pair = vars[i].split("=")
+        if(pair[0] === variable){
             return pair[1]
         }
     }
     return undefined
+}
+
+// 特殊效果
+function message(info) {
+    let message_box = document.createElement('div')
+    message_box.className = 'message_box'
+
+    let message_content = document.createElement('span')
+    message_content.innerText = info
+    message_box.append(message_content)
+
+    document.body.append(message_box)
+
+    setTimeout(function () {
+        message_box.remove()
+    }, 10000)
+}
+
+// 随机数
+function random(minNum, maxNum) {
+    switch(arguments.length){
+        case 1:
+            return parseInt(Math.random()*minNum+1,10)
+        case 2:
+            return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10)
+        default:
+            return 0
+    }
 }
