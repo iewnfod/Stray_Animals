@@ -47,11 +47,12 @@ loginTime:
 # 更多工具
 
 * 测试: anywhere (安装 node.js; MacOS/Linux:[sudo npm install anywhere -g] Windows:自己查吧!!!) 或者直接nginx反向代理也行
+* 静态服务器 python3 -m http.server 8000 (8000为默认端口，可自行修改)
 
 * 高德地图: https://lbs.amap.com/api/javascript-api/summary
 
 ---
 
-部分参考资料：
+# 部分参考资料：
 1. sqlite for django: https://blog.csdn.net/Gu_amber/article/details/122531578
 2. 在pycharm中添加 db navigator 插件
