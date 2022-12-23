@@ -1,3 +1,5 @@
+let message_occurring = false
+
 function GetHttpRequest(url, storeInfoElementId) {
     //向指定url发送请求
     let xhr = new XMLHttpRequest()
@@ -12,6 +14,7 @@ function GetHttpRequest(url, storeInfoElementId) {
         xhr.open('GET', url, true)
         xhr.send()
     } catch (e) {
+        console.log(e)
         alert('请尝试使用edge浏览器，安装并开启cors拓展。https://microsoftedge.microsoft.com/addons/detail/cors%E8%A7%A3%E9%99%A4%E5%B0%81%E9%94%81/jcpnfhmgopmjcnofcgplmhkgeicmbhli?hl=zh-CN')
     }
 }
@@ -171,19 +174,36 @@ function getQueryVariable(variable) {
 }
 
 // 特殊效果
-function message(info) {
-    let message_box = document.createElement('div')
-    message_box.className = 'message_box'
+function message(info, if_success) { // if_success 表示这个信息是好的还是坏的，true(好) / false(不好)
+    if (if_success === null || if_success === undefined) {
+        if_success = false
+    }
+    if (message_occurring === false) {
+        message_occurring = true
+        let message_box = document.createElement('div')
+        if (if_success === false) {
+            message_box.className = 'red_message_box'
+        } else {
+            message_box.className = 'green_message_box'
+        }
 
-    let message_content = document.createElement('span')
-    message_content.innerText = info
-    message_box.append(message_content)
+        let message_content = document.createElement('span')
+        message_content.innerText = info
+        message_box.append(message_content)
 
-    document.body.append(message_box)
+        document.body.append(message_box)
 
-    setTimeout(function () {
-        message_box.remove()
-    }, 10000)
+        setTimeout(function () {
+            message_box.remove()
+        }, 10000)
+        setTimeout(function () {
+            message_occurring = false
+        }, 5000)
+    } else {
+        setTimeout(function () {
+            message(info, if_success)
+        }, 1000, info, if_success)
+    }
 }
 
 // 随机数

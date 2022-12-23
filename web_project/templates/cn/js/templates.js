@@ -1,3 +1,4 @@
+let menu_exist = false
 let login_window_exist = false
 
 let templates = document.getElementById('templates').contentWindow
@@ -21,6 +22,8 @@ function login_bind() {
 }
 
 function add_menu() {
+    if (menu_exist) {return}
+    menu_exist = true
     let menu = document.createElement('div')
     menu.innerHTML = templates.document.getElementById('menu').innerHTML
     let url = location.href.split('/')

@@ -92,15 +92,15 @@ img {
     z-index: -1;
 }
 
-.message_box {
+.red_message_box {
     position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 5;
-    animation: message_box_animation 5s forwards;
-    background: red;
+    animation: red_message_box_animation 5s forwards;
+    background: #f56c6c;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.5);
     padding-left: 50px;
     padding-right: 50px;
@@ -109,25 +109,63 @@ img {
     transition: .5s;
     left: 50%;
     transform: translate(-50%);
+    color: white;
 }
 
-@keyframes message_box_animation {
+.green_message_box {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    animation: green_message_box_animation 5s forwards;
+    background: #2a842c;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.5);
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: .5s;
+    left: 50%;
+    transform: translate(-50%);
+    color: white;
+}
+
+@keyframes green_message_box_animation {
     0% {
         top: 5%;
         opacity: 0;
     }
     20% {
-        top: 10%;
+        top: 7%;
+        background: rgba(14, 157, 23, 0.9);
+        opacity: 1;
+    }
+    90% {
+        top: 7%;
+    }
+    100% {
+        top: 7%;
+        opacity: 0;
+    }
+}
+
+@keyframes red_message_box_animation {
+    0% {
+        top: 5%;
+        opacity: 0;
+    }
+    20% {
+        top: 7%;
         background: rgba(248, 55, 55, 0.9);
         opacity: 1;
     }
     90% {
-        top: 10%;
-        background: rgba(248, 55, 55, 0.9);
-        opacity: 1;
+        top: 7%;
     }
     100% {
-        top: 10%;
+        top: 7%;
         opacity: 0;
     }
 }

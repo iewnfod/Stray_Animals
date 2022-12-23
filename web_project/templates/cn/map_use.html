@@ -9,26 +9,13 @@
 
         <title>A Map</title>
         <style>
-            body, html,#allmap
+            body, html, #allmap
             {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
         </style>
         <style>
             html{height:100%}
             body{height:100%;margin:0;padding:0}
-            #container{height:95%; left: 0; right: 0; bottom: 0; top: 0; margin: 0; padding: 0}
-            .info_block {
-                top: 0;
-                left: 0;
-                display: flex;
-                border-radius: 10px;
-                border: 0;
-                background-color: rgba(0, 0, 0, .1);
-                position: absolute;
-                z-index: 1;
-                width: 30%;
-                padding: 10px;
-                transition: 5s ease-in-out;
-            }
+            #container{height:100%; left: 0; right: 0; bottom: 0; top: 0; margin: 0; padding: 0}
         </style>
 
         <script type="text/javascript">
@@ -45,10 +32,6 @@
 
     <body>
         <div id="container"></div>
-        <div class="info_block" id="info_block">
-            <span id="status"></span>
-            <span id="result"></span>
-        </div>
     </body>
 
     <script>
@@ -72,32 +55,23 @@
 
             map.addControl(geolocation);
             geolocation.getCurrentPosition(function(status,result){
-                document.getElementById('info_block').style.opacity = '1'
-                if(status=='complete'){
+                if(status === 'complete'){
                     onComplete(result)
                 }else{
                     onError(result)
                 }
-                document.getElementById('info_block').style.opacity = '0'
             })
         })
 
         //解析定位结果
         function onComplete(data) {
-            document.getElementById('status').innerHTML='定位成功'
-            var str = []
-            str.push('定位结果：' + data.position)
-            str.push('定位类别：' + data.location_type)
-            if(data.accuracy){
-                str.push('精度：' + data.accuracy + ' 米')
-            }//如为IP精确定位结果则没有精度信息
-            str.push('是否经过偏移：' + (data.isConverted ? '是' : '否'))
-            document.getElementById('result').innerHTML = str.join('<br>')
+            console.log(data)
+            message('定位成功！若定位不准确，请尝试使用其他浏览器。', true)
         }
         //解析定位错误信息
         function onError(data) {
-            document.getElementById('status').innerHTML='定位失败'
-            document.getElementById('result').innerHTML = '失败原因排查信息:'+data.message
+            console.log(data)
+            message('定位失败！')
         }
 
         function logMapBounds() {

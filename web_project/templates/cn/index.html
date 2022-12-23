@@ -28,7 +28,7 @@
             }
             .passage_deceiver:hover {
                 box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.3);
-                border-color: #eee;
+                border-color: #eeeeee;
             }
             .title {
                 word-wrap: break-word;
@@ -36,6 +36,7 @@
                 width: 300px;
             }
         </style>
+
     </head>
 
     <body>
@@ -59,6 +60,7 @@
 
         <!--一篇文章-->
         <template id="a_passage">
+
             <div class="passage_deceiver">
                 <a id="passage_a" style="display: flex; flex-direction: row; justify-content: center; text-decoration: none">
                     <div id="title_container" style="display: flex; flex-direction: column; margin: 10px">
@@ -72,23 +74,6 @@
             </div>
 
         </template>
-
-        <script>
-            //添加一篇文章 函数
-            function add_passage(maintitle, subtitle, url, image_url) {
-                let t = document.getElementById('a_passage')
-                t.content.getElementById('passage_a').setAttribute('href', url)
-                t.content.getElementById('mainimage').src = image_url
-                t.content.getElementById('maintitle').innerText = maintitle
-                t.content.getElementById('subtitle').innerText = subtitle
-                let clone = t.content.cloneNode(true)
-                document.getElementById('passage_container').appendChild(clone)
-            }
-            // 添加文章
-            add_passage('虎子：小狗狗能有什么坏心思呢，TA只是想要很多爱', ' 流浪动物发声  杭州领养 流浪动物发声  2022-07-11 18:00 发表于江苏', 'https://mp.weixin.qq.com/s/r3Qmt1Zoc-9I5soBwfJgCA', '../Images/loading.png')
-            add_passage('朱古力：死里逃生，我成为了星球上独一无二的小王子', ' 流浪动物发声  杭州领养 流浪动物发声  2022-05-22 20:07 发表于浙江', 'https://mp.weixin.qq.com/s/gOWa81PI05AuxfsGpczJhQ', '../Images/loading.png')
-
-        </script>
 
         <!--一个help card-->
         <template id="a_help">
@@ -107,21 +92,6 @@
             </a>
 
         </template>
-
-        <script>
-            function add_pet(name, sex, img, id) {
-                let t = document.getElementById('a_help')
-                t.content.getElementById('pet_img').src = img
-                t.content.getElementById('pet_name').innerText = name
-                t.content.getElementById('pet_sex').innerText = sex
-                t.content.getElementById('pet_id').innerText = id
-                t.content.getElementById('pet_a').setAttribute('href', './pet.html?id='+id)
-                let clone = t.content.cloneNode(true)
-                document.getElementById('pet_container').appendChild(clone)
-            }
-            add_pet('name', 'sex', '../Images/loading.png', '')
-            add_pet('name', 'sex', '../Images/loading.png', '')
-        </script>
 
     </body>
 
