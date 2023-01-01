@@ -6,6 +6,7 @@ class log():
         self.name = log_name
         self.log_path = os.path.join(log_path, f'{log_name}.log')
         self.type = {0: 'INFO', 1: 'WARNING', 2: 'ERROR', 3: 'FATAL'}
+        self.reverse_type = {'INFO': 0, 'WARNING': 1, 'ERROR': 2, 'FATAL': 3}
         self.color_type = {0: '', 1: '\033[0;30;43m', 2: '\033[0;37;41m', 3: '\033[0;37;41m'}
         self.color_end = '\033[0m'
         self.time_color = '\x1B[3m'
@@ -39,6 +40,7 @@ class log():
                 self.add_log('Log Error : The new Log Name is Too Long. ', 1)
 
             self.type[new_level_index] = new_level_name
+            self.reverse_type[new_level_name] = new_level_index
             self.color_type[new_level_index] = color_type
             self.add_log(f'Add New Log Level: "{new_level_name}" with Index: "{new_level_index}"')
 
@@ -54,3 +56,21 @@ class log():
         print(' '*(self.max_type_length-len(self.type[level])) + ' ', end='')
         # 输出内容
         print(info)
+
+    def output_all_log(self):
+        with open(self.log_path, 'r') as f:
+            s = f.read()
+        for i in s.split('\n'):
+            i = i.split(' ')
+            self.output_log(i[0], ' '.join(i[2:]), self.reverse_type[i[1]])
+
+'''
+log_ = log('', '123')
+log_.add_log('This is a log to try warning', 1)
+log_.add_log_level(4, 'A')
+log_.add_log('This is a log to try new log level', 4)
+log_.add_log('This is a log to try error', 2)
+log_.add_log('This is a log to test the wrong level number', 10)
+log_.add_log_level(5, 'ifewiijwefjiofijweao')
+log_.add_log('This is a log to try the too long log name', 5)
+'''
