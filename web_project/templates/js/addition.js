@@ -38,19 +38,21 @@ function create_snow_point(parent, n) {
     snow_point.style.backgroundSize = hw + ' ' + hw
 
     let snow_point_time = random(20, 30)
-    let delay_time = Math.random() * 200
-    let rotate_deg = [random(-720, -360), random(360, 720)][random(0, 1)]
+    let delay_time = Math.random() * 50
+    let rotate_deg = [random(-2880, -1440), random(1440, 2880)][random(0, 1)]
     let left = random(10, window_width)
+    let left_move = left + random(-200, 200)
     // console.log(snow_point_time, delay_time, rotate_deg, left)
 
     snow_point.style.left = left + 'px'
     snow_point.style.animationDuration = snow_point_time + 's'
     snow_point.style.animationDelay = delay_time + 's'
     snow_point.style.setProperty('--rotate-deg', rotate_deg + 'deg')
+    snow_point.style.setProperty('--left', left_move + 'px')
 
     parent.append(snow_point)
     // console.log(snow_point)
-    if (n <= 250) {
+    if (n <= 200) {
         return create_snow_point(parent, n+1)
     } else {
         return undefined

@@ -19,6 +19,21 @@ function GetHttpRequest(url, storeInfoElementId) {
     }
 }
 
+function sendPostRequest(url, data, onsuccess, onerror) {
+    var xhr = new XMLHttpRequest()
+    xhr.open('POST', url, true)
+    xhr.setRequestHeader('Content-Type', 'application/json')
+    xhr.send(data)
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            onsuccess(xhr)
+        } else {
+            onerror(xhr)
+        }
+    }
+}
+
 function getInfoFromElement(storeInfoElementId, action, args) {
     let el = document.getElementById(storeInfoElementId)
     console.log(el)
@@ -92,13 +107,6 @@ function PostHttpRequest(url, values) {
     temp.submit()
 
     return temp
-}
-
-function getIP() {
-    let s = document.createElement('script')
-    s.src = 'https://pv.sohu.com/cityjson?ie=utf-8'
-    document.body.appendChild(s)
-    return returnCitySN["cip"]
 }
 
 function getCurrentLocation() {
@@ -175,6 +183,7 @@ function getQueryVariable(variable) {
 
 // 特殊效果
 function message(info, if_success) { // if_success 表示这个信息是好的还是坏的，true(好) / false(不好)
+    // 不填写 if_success，自动设置为 false(不好)
     if (if_success === null || if_success === undefined) {
         if_success = false
     }
@@ -200,6 +209,7 @@ function message(info, if_success) { // if_success 表示这个信息是好的�
             message_occurring = false
         }, 5000)
     } else {
+        // 保证一个 message 显示完以后再显示下一个
         setTimeout(function () {
             message(info, if_success)
         }, 1000, info, if_success)

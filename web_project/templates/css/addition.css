@@ -1,5 +1,6 @@
 :root {
     --rotate-deg: 360deg;
+    --left: 0;
 }
 
 .snow_div {
@@ -36,6 +37,7 @@
     99% {
         top: 110%;
         transform: rotateZ(var(--rotate-deg));
+        left: var(--left);
     }
 }
 
