@@ -1,0 +1,4 @@
+启动项目 python3 web_project/manage.py runserver localhost:8080
+添加数据库 python3 web_project/manage.py makemigrations login_model; python3 web_project/manage.py migrate login_model; 建议直接自己在workbench里面加
+启动内网穿透 ./cpolar http 8080
+创建管理员账户 python3 web_project/manage.py createsuperuser

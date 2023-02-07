@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="cn">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+		<title>领养与帮助</title>
+		<link href="../css/menubar.css" rel="stylesheet" type="text/css">
+		<link href="../css/main.css" rel="stylesheet" type="text/css">
+		<link href="../css/font/fonts.css" rel="stylesheet" type="text/css">
+		<script src="../js/support.js"></script>
+		<script src="./js/classes.js"></script>
+		<script src="../js/main.js"></script>
+		<link rel="shortcut icon" href="../Images/icon.jpeg">
+
+		<style>
+			.select_pet {
+				border: ghostwhite 1px solid;
+				margin: 10px;
+				padding: 5px;
+				background-color: transparent;
+				border-radius: 5px;
+				transition: all 0.2s ease-in-out;
+				overflow: hidden;
+			}
+			.select_pet:hover {
+				background-color: rgba(0, 0, 0, 0.1);
+				overflow: auto;
+			}
+			.select_pet:focus {
+				border: black 1px solid;
+				outline: none;
+			}
+			.tag {
+				background-color: rgba(0, 0, 0, 0.05);
+				border-radius: 5px;
+				font-size: 15px;
+				margin-left: 10px;
+				margin-right: 10px;
+				padding: 5px;
+			}
+			.l {
+				text-decoration: none;
+				color: black;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<!--主界面-->
+		<div id="main_container">
+			<div id="toolbar" style="display: flex; flex-direction: row; align-items: center">
+
+				<select id="pet_type_selector" class="select_pet" onchange="change()">
+					<option value="-1">宠物类型</option>
+					<option value="狗">狗狗</option>
+					<option value="猫">猫猫</option>
+				</select>
+
+				<select id="pet_sex_selector" class="select_pet" onchange="change()">
+					<option value="-1">宠物性别</option>
+					<option value="0">男</option>
+					<option value="1">女</option>
+				</select>
+
+			</div>
+
+			<div id="all_items" style="overflow-y: scroll; margin: 10px">
+
+			</div>
+
+			<div style="padding-top: 10px; margin-bottom: 10px; border-top: 1px black solid">
+				<span style="width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center">暂时没有更多啦～</span>
+			</div>
+
+			<script>
+				function change() {
+					var result = new Array()
+					let pet_type = document.getElementById('pet_type_selector').value
+					let pet_sex = document.getElementById('pet_sex_selector').value
+					for (let i = 0; i < pet_list.length; i ++) {
+						if (pet_list[i].type == pet_type || pet_type == -1) {
+							if (pet_list[i].sex == pet_sex || pet_sex == -1) {
+								result.push(pet_list[i])
+							}
+						}
+					}
+					// 清除all_items
+					document.getElementById('all_items').innerHTML = ''
+					// 重新添加
+					for (let i = 0; i < result.length; i ++) {
+						add_help_item(result[i])
+					}
+				}
+			</script>
+		</div>
+
+		<!--添加一个动物-->
+		<template id="a_help_item">
+			<a id="link" class="l">
+				<div style="border-top: black 1px solid; margin-top: 10px; padding: 10px; display: flex; flex-direction: row; align-items: center">
+					<img src="../Images/loading.png" style="width: 100px; height: 100px" id="pet_img">
+					<div id="all_info" style="margin: 10px">
+						<div style="padding: 10px">
+							<span>名字 : </span><span id="pet_name" style="margin-right: 20px"></span>
+							<span>性别 : </span><span id="pet_sex"></span>
+						</div>
+						<div style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center">
+							<span class="tag" id="weight"></span>
+							<span class="tag" id="sterilization"></span>
+							<span class="tag" id="parasite"></span>
+							<span class="tag" id="immune"></span>
+						</div>
+					</div>
+				</div>
+			</a>
+		</template>
+
+		<script>
+
+			function add_help_item(p) {
+				let t = document.getElementById('a_help_item')
+				t.content.getElementById('pet_name').innerText = p.name
+				var sexl = {'0': '男', '1': '女', '-1': '未知'}
+				t.content.getElementById('pet_sex').innerText = sexl[p.sex]
+				if (p.img !== '') {
+					t.content.getElementById('pet_img').setAttribute('src', p.img)
+				}
+				t.content.getElementById('weight').innerText = p.weight.toString() + '斤'
+				t.content.getElementById('link').setAttribute('href', './pet.html?id=' + p.id)
+
+				if (p.sterilization) {
+					t.content.getElementById('sterilization').innerText = '已绝育'
+				} else {
+					t.content.getElementById('sterilization').innerText = '未绝育'
+				}
+
+				if (p.parasite) {
+					t.content.getElementById('parasite').innerText = '已驱虫'
+				} else {
+					t.content.getElementById('parasite').innerText = '未驱虫'
+				}
+
+				if (p.immune) {
+					t.content.getElementById('immune').innerText = '已免疫'
+				} else {
+					t.content.getElementById('immune').innerText = '未免疫'
+				}
+
+				let clone = t.content.cloneNode(true)
+				document.getElementById('all_items').appendChild(clone)
+			}
+
+			var pet_list = new Array()
+			// pet(name: string, sex: int, img: string, type: string, id: string, weight: int, sterilization: bool, parasite: bool, immune: bool)
+			pet_list.push(new pet('福福', '0', '', '狗', '1', 20, true, true, true))
+			pet_list.push(new pet('核桃', '1', '', '狗', '1', 18, true, true, true))
+			pet_list.push(new pet('克罗心', '1', '', '狗', '1', 40, true, true, true))
+			pet_list.push(new pet('茅台', '1', '', '狗', '1', 13, true, true, true))
+			pet_list.push(new pet('棕棕', '0', '', '狗', '1', 12, true, true, true))
+			pet_list.push(new pet('小王子', '0', '', '狗', '1', 40, true, true, true))
+			pet_list.push(new pet('夏洛', '0', '', '狗', '1', 15, true, true, true))
+			pet_list.push(new pet('米苏', '1', '', '狗', '1', 30, true, true, true))
+			pet_list.push(new pet('小乖', '1', '', '狗', '1', 38, true, true, true))
+			pet_list.push(new pet('纸板', '0', '', '狗', '1', 22, true, true, true))
+			pet_list.push(new pet('涯妹', '1', '', '狗', '1', 12, true, true, true))
+			pet_list.push(new pet('小新', '1', '', '狗', '1', 10, true, true, true))
+
+			for (var i = 0; i < pet_list.length; i ++) {
+				add_help_item(pet_list[i])
+			}
+
+		</script>
+
+	</body>
+
+	<!--需要后置加载的文件-->
+	<iframe src="./templates.html" id="templates" class="login_template"></iframe>
+
+	<script src="./js/templates.js"></script>
+
+</html>

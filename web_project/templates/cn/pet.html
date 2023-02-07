@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ch">
+    <head>
+        <!--编码-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+        <meta charset="UTF-8">
+        <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
+        <!--标题-->
+        <title>首页</title>
+        <!--图标-->
+        <link rel="shortcut icon" href="../Images/icon.jpeg">
+        <!--预加载js support文件-->
+        <script src="../js/support.js"></script>
+        <script src="../js/main.js"></script>
+        <!--style-->
+        <link href="../css/menubar.css" rel="stylesheet" type="text/css">
+        <link href="../css/main.css" rel="stylesheet" type="text/css">
+        <link href="../css/font/fonts.css" rel="stylesheet" type="text/css">
+
+    </head>
+
+    <body>
+
+        <div id="main">
+
+        </div>
+
+        <span id="data" style="display: none"></span>
+
+    <script>
+        let pet_id = getQueryVariable('id')
+        GetHttpRequest('./getPetData?id='+pet_id, 'data')
+    </script>
+
+    </body>
+    <!--需要后置加载的文件-->
+    <iframe src="./templates.html" id="templates" class="login_template"></iframe>
+
+    <script src="./js/templates.js"></script>
+
+    <script>
+        if (getCookie('username') === undefined) {
+            window.history.back()
+        }
+    </script>
+
+</html>

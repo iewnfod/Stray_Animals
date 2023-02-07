@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ch">
+	<head>
+		<!--编码-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+		<meta charset="UTF-8">
+		<meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
+		<!--标题-->
+		<title>Passage</title>
+		<!--图标-->
+		<link rel="shortcut icon" href="../Images/icon.jpeg">
+		<!--预加载js support文件-->
+		<script src="../js/support.js"></script>
+		<!--style-->
+		<link href="../css/menubar.css" rel="stylesheet" type="text/css">
+		<link href="../css/main.css" rel="stylesheet" type="text/css">
+		<link href="../css/font/fonts.css" rel="stylesheet" type="text/css">
+	</head>
+
+	<body>
+
+		<div>
+
+			<div class="content">
+				<iframe src="" id="passage_content" style="border: transparent">
+					<!--通过导入html文件来实现文件md文件展示-->
+				</iframe>
+			</div>
+
+			<div class="comment">
+				<div class="add_comment" style="display: flex; flex-direction: row; flex-grow: 1; align-items: center; border-radius: 10px; padding: 10px; background-color: aliceblue">
+					<input id="input_comment" style="width: 80%; height: 50px; border: 1px solid rgb(199, 193, 193); border-radius: 5px; padding-left: 10px; padding-right: 10px;" type="text" placeholder="来发表你的评论吧！">
+					<button class="bt" style="margin-left: 10px; height: 50px; width: 20%">发送</button>
+				</div>
+
+				<div id="all_comment_div" style="margin: 10px">
+					<span style="font-size: 20px">全部评论</span><span id="comment_num" style="margin-left: 10px">0</span>
+
+					<div style="border-radius: 10px; padding: 10px" id="all_comment">
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</body>
+
+	<!--一条评论-->
+	<template id="a_comment">
+		<div style="display: flex; flex-direction: row; align-items: center; margin: 10px" id="detector">
+			<div id="head">
+				<img src="../Images/person.png" style="height: 50px; width: 50px;" class="person_img" id="user_img">
+				<div class="hid" id="comment_id"></div>
+			</div>
+			<div id="name_and_comment_and_button">
+				<div id="name_and_comment" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-around; margin-left: 5px; flex-grow: 1">
+					<div id="name" style="font-size: 10px">未命名</div>
+					<div id="comment_content" style="margin-top: 3px; width: 100%">
+						<span style="width: 100%">Try Comment</span>
+					</div>
+				</div>
+
+				<button class="bt" style="border: 0; display: flex; flex-direction: row; justify-content: center; align-items: center" id="like_bt" onclick="like(this.name)">
+					<img src="../Images/like.png" style="width: 15px; height: 15px" id="like_img" name="">
+					<span id="like_num" style="margin-left: 2px" name="">0</span>
+				</button>
+			</div>
+		</div>
+
+		<script>
+			function like(name) {
+				img = document.getElementsByName('like_img'+name)[0]
+				num = document.getElementsByName('like_num'+name)[0]
+				if (img.src.split('/')[img.src.split('/').length-1] == 'like.png') {
+					img.src = '../Images/liked.png'
+					num.innerText = parseInt(num.innerText) + 1
+				} else {
+					img.src = '../Images/like.png'
+					num.innerText = parseInt(num.innerText) - 1
+				}
+			}
+		</script>
+
+	</template>
+
+	<script>
+		function add_comment(comment, user) {
+			let t = document.getElementById('a_comment')
+			t.content.getElementById('comment_id').innerText = comment['id']
+			t.content.getElementById('name').innerText = user['name']
+			t.content.getElementById('user_img').src = user['img']
+			t.content.getElementById('comment_content').innerText = comment['content']
+			t.content.getElementById('like_num').innerText = comment['like_num']
+			t.content.getElementById('like_bt').setAttribute('name', comment['id'])
+			t.content.getElementById('like_img').setAttribute('name', 'like_img' + comment['id'])
+			t.content.getElementById('like_num').setAttribute('name', 'like_num'+comment['id'])
+			let clone = t.content.cloneNode(true)
+			document.getElementById('all_comment').appendChild(clone)
+		}
+		add_comment({'content': 123, 'id': 1, 'like_num': 1}, {'name':123, 'img':'../Images/person.png'})
+		add_comment({'content': 123, 'id': 2, 'like_num': 1}, {'name':123, 'img':'../Images/person.png'})
+	</script>
+
+	<!--需要后置加载的文件-->
+	<iframe src="./templates.html" id="templates" class="login_template"></iframe>
+
+	<script src="./js/templates.js"></script>
+
+</html>

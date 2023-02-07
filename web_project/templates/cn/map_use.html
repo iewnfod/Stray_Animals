@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <link href="../css/main.css" rel="stylesheet" type="text/css">
+        <link href="../css/font/fonts.css" rel="stylesheet" type="text/css">
+
+        <title>A Map</title>
+        <style>
+            body, html, #allmap
+            {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+        </style>
+        <style>
+            html{height:100%}
+            body{height:100%;margin:0;padding:0}
+            #container{height:100%; left: 0; right: 0; bottom: 0; top: 0; margin: 0; padding: 0}
+        </style>
+
+        <script type="text/javascript">
+            window._AMapSecurityConfig = {
+                // serviceHost:'./_AMapService',
+                securityJsCode:'a6073c64dd3aefec077fba55e1f630f8',
+            }
+        </script>
+        <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=eb4c8e6f846345eb9b9bb81e1ed96c01"></script>
+
+        <script src="../js/support.js"></script>
+        <script src="../js/map.js"></script>
+    </head>
+
+    <body>
+        <div id="container"></div>
+    </body>
+
+    <script>
+        // init
+        var map = new AMap.Map('container', {
+            zoom: 20,
+            resizeEnable: true,
+            showIndoorMap: false,
+            center: [0, 0]
+        })
+
+        // 定位
+        AMap.plugin('AMap.Geolocation', function() {
+            var geolocation = new AMap.Geolocation({
+                enableHighAccuracy: true,//是否使用高精度定位，默认:true
+                timeout: 10000,          //超过10秒后停止定位，默认：5s
+                buttonPosition:'RB',    //定位按钮的停靠位置
+                buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+                zoomToAccuracy: true,   //定位成功后是否自动调整地图视野到定位点
+            })
+
+            map.addControl(geolocation);
+            geolocation.getCurrentPosition(function(status,result){
+                if(status === 'complete'){
+                    onComplete(result)
+                }else{
+                    onError(result)
+                }
+            })
+        })
+
+        //解析定位结果
+        function onComplete(data) {
+            console.log(data)
+            message('定位成功！若定位不准确，请尝试使用其他浏览器。', true)
+        }
+        //解析定位错误信息
+        function onError(data) {
+            console.log(data)
+            message('定位失败！')
+        }
+
+        function logMapBounds() {
+            var bounds = map.getBounds()
+            var northeast = bounds.northeast.split(',')
+            var southwest = bounds.southwest.split(',')
+        }
+
+    </script>
+
+</html>

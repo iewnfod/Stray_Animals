@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ch">
+    <head>
+        <!--编码-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+        <meta charset="UTF-8">
+        <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
+        <!--标题-->
+        <title>首页</title>
+        <!--图标-->
+        <link rel="shortcut icon" href="../Images/icon.jpeg">
+        <!--预加载js support文件-->
+        <script src="../js/support.js"></script>
+        <script src="../js/main.js"></script>
+        <!--style-->
+        <link href="../css/menubar.css" rel="stylesheet" type="text/css">
+        <link href="../css/main.css" rel="stylesheet" type="text/css">
+        <link href="../css/font/fonts.css" rel="stylesheet" type="text/css">
+        <style>
+            .passage_deceiver {
+                margin: 20px;
+                padding: 10px;
+                background-color: transparent;
+                box-shadow: none;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: 5px;
+                transition: all .2s ease-in-out;
+            }
+            .passage_deceiver:hover {
+                box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.3);
+                border-color: #eeeeee;
+            }
+            .title {
+                word-wrap: break-word;
+                word-break: normal;
+                width: 300px;
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+        <!--main container-->
+        <div id="main_container" style="display: flex; flex-direction: column; margin-left: 10px; margin-right: 10px">
+            <div style="display: flex; flex-direction: row">
+                <div id="passage_container"></div>
+                <div id="pet_container" style="padding: 10px; margin: 10px; margin-left: 50px; right: 10px; position: absolute; display: flex; flex-direction: column; align-items: center">
+<!--                    <div>-->
+<!--                        <button class="bt" style="margin-bottom: 10px">上传宠物</button>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+
+        <div style="background-color: rgba(0, 0, 0, 0.1); border-top: rgba(0, 0, 0, 0.1) 1px solid; width:100%; display: flex; flex-direction: column; align-items: center; bottom: 0; position: absolute; left: 0; padding-bottom: 5px">
+            <span class="last_info">若有任何问题或投诉或想要加入我们，请发送邮件到我们的邮箱</span>
+            <span class="last_info">联系邮箱: strayanimal@163.com</span>
+        </div>
+
+        <!--一篇文章-->
+        <template id="a_passage">
+
+            <div class="passage_deceiver">
+                <a id="passage_a" style="display: flex; flex-direction: row; justify-content: center; text-decoration: none">
+                    <div id="title_container" style="display: flex; flex-direction: column; margin: 10px">
+                        <span id="maintitle" style="font-size: 30px; margin-bottom: 10px" class="title">Main_Title</span>
+                        <span id="subtitle" style="font-size: 15px" class="title">Sub_Title</span>
+                    </div>
+                    <div id="image_container" style="margin: 10px">
+                        <img id="mainimage" style="width: 100px; height: 100px">
+                    </div>
+                </a>
+            </div>
+
+        </template>
+
+        <!--一个help card-->
+        <template id="a_help">
+
+            <a id="pet_a" style="display: flex; flex-direction: column; align-items: center; width: 150px; height: 150px; border: rgba(0, 0, 0, 0.1) 1px solid; border-radius: 10px; margin: 10px; text-decoration: none; color: black" class="card">
+                <img src="../Images/loading.png" id="pet_img" class="face" style="width: 100%; height: 100%; border-radius: 10px; border: transparent 0 solid">
+                <div class="back" style="display: flex; flex-direction: column; align-items: center; justify-items: center; margin: 10px">
+                    <div>
+                        <span>名字 : </span><span id="pet_name"></span>
+                    </div>
+                    <div>
+                        <span>性别 : </span><span id="pet_sex"></span>
+                    </div>
+                </div>
+                <span class="hid" id="pet_id"></span>
+            </a>
+
+        </template>
+
+    </body>
+
+    <!--需要后置加载的文件-->
+    <iframe src="./templates.html" id="templates" class="login_template"></iframe>
+
+    <script src="./js/templates.js"></script>
+
+</html>

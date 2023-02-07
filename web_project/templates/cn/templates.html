@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ch">
+	<head>
+		<meta charset="UTF-8">
+		<title>templates</title>
+	</head>
+
+	<body>
+		<!--登录框-->
+		<template id="login_frame">
+			<div style="display: flex; flex-direction: column; align-items: center; width: 100%; height: 100%; top: 0; left: 0; position: relative">
+				<div style="display: flex; flex-grow: 1; flex-direction: column; border-radius: 10px; position: absolute; width: 1000px; height: 550px" id="login_div">
+					<iframe style="height: 90%; width: 100%; border: 1px black solid; border-top-left-radius: 10px; border-top-right-radius: 10px; background-color: transparent" src="login.html" id="login_iframe"></iframe>
+					<button id="login_cancel" class="bt" style="border-top-left-radius: 0; border-top-right-radius: 0; width: 100%; border: 1px  black solid">取消</button>
+				</div>
+				<script>
+					document.getElementById('login_cancel').style.width = document.getElementById('login_iframe').offsetWidth + 'px'
+					document.getElementById('login_cancel').addEventListener('click', function () {
+						let ld = document.getElementById('login_div')
+						ld.parentNode.removeChild(ld)
+						login_window_exist = false
+						document.getElementById('main_container').style.opacity = '1'
+					})
+				</script>
+			</div>
+		</template>
+
+		<!--menu-->
+		<template id="menu">
+
+				<div id="top" style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; height: 5%">
+					<!--img-->
+					<img src="../Images/icon.jpeg" style="height: 50px; width: 50px; margin-left: 10px">
+					<!--menubar-->
+					<div id="menu_bar" class="menubar">
+
+						<div id="index_div" class="menubarDiv">
+							<span id="index" class="menubarItem" onmousedown="window.location.href = './index.html'">首页</span>
+							<div class="menubarBottom" id="indexBottom"></div>
+						</div>
+
+						<div id="interview_div" class="menubarDiv">
+							<span id="interview" class="menubarItem" onmousedown="window.location.href = './interview.html'">采访与博客</span>
+							<div class="menubarBottom" id="interviewBottom"></div>
+						</div>
+
+						<div id="shop_div" class="menubarDiv">
+							<span id="shop" class="menubarItem" onmousedown="window.location.href = './shop.html'">商城</span>
+							<div class="menubarBottom" id="shopBottom"></div>
+						</div>
+
+						<div id="map_div" class="menubarDiv">
+							<span id="map" class="menubarItem" onmousedown="window.location.href = './map.html'">地图</span>
+							<div class="menubarBottom" id="mapBottom"></div>
+						</div>
+
+						<div id="help_div" class="menubarDiv">
+							<span id="help" class="menubarItem" onmousedown="window.location.href = './help.html'" style="margin-right: 10px">领养与帮助</span>
+							<div class="menubarBottom" id="helpBottom"></div>
+						</div>
+
+						<div id="change_lang_div" style="margin-left: 10px">
+							<button id="change_lang" class="changelan" onclick="change_lang('cn', 'en')">
+								<span>中 / English</span>
+							</button>
+						</div>
+
+					</div>
+
+					<div style="margin: 10px; width: 40%; display: flex; flex-direction: row; justify-content: center; align-items: center">
+						<input placeholder="输入搜索" class="search_input" type="text" id="search_input" onchange="search()">
+						<img src="../Images/search.png" class="search_img" onclick="search()" id="search_img">
+					</div>
+
+					<div id="login" style="margin-right: 10px">
+						<img src="../Images/person.png" class="person_img" id="person_img">
+					</div>
+
+				</div>
+
+				<div id="login_container" style="position: absolute; z-index: 1; width: 100%"></div>
+
+
+		</template>
+
+	</body>
+</html>

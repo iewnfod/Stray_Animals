@@ -1,0 +1,120 @@
+button {
+    cursor: pointer;
+}
+.menubar {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    height: 50px;
+    align-items: center;
+    background-color: transparent;
+    width: 50%;
+}
+.menubarItem {
+    background-color: transparent;
+    color: black;
+    padding: 10px;
+    font-size: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    cursor: pointer;
+    border-radius: 2px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.menubarBottom {
+    transition: .2s ease-in-out;
+    width: 0;
+    background: black;
+    border-radius: 2px;
+    height: 2px;
+}
+
+.menubarIcon {
+    height: 50px;
+}
+.menubarDiv {
+    margin-left: 5px;
+    margin-right: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.changelan {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 15px;
+    background-color: transparent;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    transition: .2s ease;
+}
+
+.changelan:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.search_input {
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    border: rgba(0, 0, 0, .1) 1px solid;
+    transition: .2s ease;
+    height: 90%;
+}
+
+.search_input:hover {
+    border: rgba(0, 0, 0, .5) 1px solid;
+}
+
+.search_input:focus {
+    outline: none;
+    border: rgba(0, 0, 0, .5) 1px solid;
+}
+
+.search_img {
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+@keyframes showMenubarBottom {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 90%;
+    }
+}
+
+@keyframes removeMenubarBottom {
+    0% {
+        width: 90%;
+    }
+    100% {
+        width: 0;
+    }
+}
+
+.person_img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: rgba(0, 0, 0, 0.1) 1px solid;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: .2s ease-in-out;
+}
+
+.person_img:hover {
+    border: rgba(0, 0, 0, 0.5) 1px solid;
+}
