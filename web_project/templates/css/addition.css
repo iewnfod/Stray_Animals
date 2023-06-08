@@ -42,14 +42,11 @@
 }
 
 .snow_bt {
-    padding-left: 10px;
-    padding-right: 10px;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     font-size: 15px;
     background-color: transparent;
-    padding-top: 3px;
-    padding-bottom: 3px;
+    padding: 3px 10px;
     transition: .2s ease;
     cursor: pointer;
     position: fixed;
