@@ -35,6 +35,19 @@ function add_bg() {
     document.body.append(bg)
 }
 
+// 运行容易保存的函数
+function run(fn, err) {
+    try {
+        fn();
+    } catch (e) {
+        if (err) {
+            err(e);
+        } else {
+            console.log(e);
+        }
+    }
+}
+
 // 添加额外信息
 document.write('<link href="../css/addition.css" type="text/css" rel="stylesheet">')
 document.write('<script src="../js/addition.js"></script>')
@@ -51,86 +64,56 @@ window.onload = function () {
     // document.body.append(temp)
 
     // 添加菜单
-    try {
-        add_menu()
-    } catch (e) {
-        console.log(e)
-    }
+    run(add_menu)
 
     // 添加背景
-    try {
-        add_bg()
-    } catch (e) {
-        console.log(e)
-    }
+    run(add_bg)
 
     // 刷新用户
-    try {
-        refresh_user()
-    } catch (e) {
-        console.log(e)
-    }
+    run(refresh_user)
 
     // login bind
-    try {
-        login_bind()
-    } catch (e) {
-        console.log(e)
-    }
+    run(login_bind)
 
-    // 添加动画核心
-    try {
+    // 加载动画
+    run(function () {
+        // 加载动画依赖
         let animation_core = document.createElement('script')
         animation_core.src = '../js/animation_core.js'
         document.head.append(animation_core)
-    } catch (e) {
-        console.log(e)
-    }
 
-    // 添加动画
-    try {
+        // 加载动画文件
         animation_core.onload = function () {
             // 需要等待动画核心加载完成
             let animation = document.createElement('script')
             animation.src = '../js/animation.js'
             document.head.append(animation)
         }
-    } catch (e) {
-        console.log(e)
-    }
+    })
 
     // 修改搜索图片高度
-    try {
+    run(function () {
         document.getElementById('search_img').style.height = document.getElementById('search_input').offsetHeight * 0.8 + 'px'
-    } catch (e) {
-        console.log(e)
-    }
+    })
 
     // 监听窗口变化
-    try {
+    run(function () {
         window.onresize = function () {}
-    } catch (e) {
-        console.log(e)
-    }
+    })
 
     // 下雪效果
-    try {
-        snow()
-    } catch (e) {
-        console.log(e)
-    }
+    run(snow)
 
     // 主页面 js 加载
-    try {
+    run(function () {
         let file_name = window.location.href.split('/')
         file_name = file_name[file_name.length - 1]
         file_name = file_name.split('.')[0]
         let main_script = document.createElement('script')
         main_script.src = './js/' + file_name + '.js'
         document.head.append(main_script)
-    } catch (e) {
-        console.log(e)
-    }
+    })
+
 }
 
 document.addEventListener('error', function (e) {
