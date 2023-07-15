@@ -102,7 +102,7 @@ window.onload = function () {
     })
 
     // 下雪效果
-    run(snow)
+    // run(snow)
 
     // 主页面 js 加载
     run(function () {
@@ -120,6 +120,6 @@ document.addEventListener('error', function (e) {
     let elem = e.target
     if (elem.tagName.toLowerCase() === 'img') {
         elem.src = '../Images/loading_error.png'
-        message('图片加载出错啦～')
+        error_message('图片加载出错啦～')
     }
 }, true)

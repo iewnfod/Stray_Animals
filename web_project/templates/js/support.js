@@ -20,7 +20,7 @@ function GetHttpRequest(url, storeInfoElementId) {
 }
 
 function sendPostRequest(url, data, onsuccess, onerror) {
-    var xhr = new XMLHttpRequest()
+    let xhr = new XMLHttpRequest()
     xhr.open('POST', url, true)
     xhr.setRequestHeader('Content-Type', 'application/json')
     xhr.send(data)
@@ -182,7 +182,7 @@ function getQueryVariable(variable) {
 }
 
 // 特殊效果
-function message(info, if_success) { // if_success 表示这个信息是好的还是坏的，true(好) / false(不好)
+function error_message(info, if_success) { // if_success 表示这个信息是好的还是坏的，true(好) / false(不好)
     // 不填写 if_success，自动设置为 false(不好)
     if (if_success === null || if_success === undefined) {
         if_success = false

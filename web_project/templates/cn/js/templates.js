@@ -34,7 +34,7 @@ function add_menu() {
 
     document.getElementById(end+'Bottom').style.width = '90%'
 
-    let menubar_items = ['index', 'interview', 'shop', 'map', 'help']
+    let menubar_items = ['index', 'interview', 'work', 'shop', 'map', 'help']
     // 添加事件
     for (let i = 0; i < menubar_items.length; i ++) {
         if (menubar_items[i] !== end) {
