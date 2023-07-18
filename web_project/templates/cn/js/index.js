@@ -1,12 +1,14 @@
 //添加一篇文章 函数
+let index = 0;
 function add_passage(maintitle, subtitle, url, image_url) {
+    index ++;
     let t = document.getElementById('a_passage')
     t.content.getElementById('passage_a').setAttribute('href', url)
-    t.content.getElementById('mainimage').src = image_url
-    t.content.getElementById('maintitle').innerText = maintitle
-    t.content.getElementById('subtitle').innerText = subtitle
+    t.content.getElementById('main_image').src = image_url
+    t.content.getElementById('main_title').innerText = maintitle
+    t.content.getElementById('sub_title').innerText = subtitle
     let clone = t.content.cloneNode(true)
-    document.getElementById('passage_container').appendChild(clone)
+    document.getElementById(`passage_container${index%2}`).appendChild(clone)
 }
 // 添加文章
 add_passage('【领养合集】一大波阳光爱笑的狗狗上线 | 城管8狗还剩卡拉无人问津', '流浪动物发声 杭州领养 流浪动物发声 2023-05-25 18:33 发表于浙江', 'https://mp.weixin.qq.com/s/DjhxzEKzYtwdUlbhizMQcA', 'https://resources.muyunxi.top/static/articles/cover/3.jpg')

@@ -35,6 +35,20 @@
                 word-break: normal;
                 width: 300px;
             }
+            .last_info_div {
+	            background-color: rgba(0, 0, 0, 0.1);
+	            border-top: rgba(0, 0, 0, 0.1) 1px solid;
+	            width: 100%;
+	            display: flex;
+	            flex-direction: column;
+	            align-items: center;
+	            bottom: 0;
+	            left: 0;
+	            padding-bottom: 5px;
+            }
+            .passage_container {
+	            max-width: 30%;
+            }
         </style>
 
     </head>
@@ -42,54 +56,37 @@
     <body>
 
         <!--main container-->
-        <div id="main_container" style="display: flex; flex-direction: column; margin-left: 10px; margin-right: 10px">
+        <div id="main_container" style="display: flex; flex-direction: column; margin-left: 10px; margin-right: 10px; height: 100%">
             <div style="display: flex; flex-direction: row">
-                <div id="passage_container"></div>
-                <div id="pet_container" style="padding: 10px; margin: 10px; margin-left: 50px; right: 10px; position: absolute; display: flex; flex-direction: column; align-items: center">
-<!--                    <div>-->
-<!--                        <button class="bt" style="margin-bottom: 10px">上传宠物</button>-->
-<!--                    </div>-->
-                </div>
+                <div id="passage_container1" class="passage_container"></div>
+	            <div id="passage_container0" class="passage_container"></div>
             </div>
         </div>
 
-        <div style="background-color: rgba(0, 0, 0, 0.1); border-top: rgba(0, 0, 0, 0.1) 1px solid; width:100%; display: flex; flex-direction: column; align-items: center; bottom: 0; position: absolute; left: 0; padding-bottom: 5px">
+        <div class="last_info_div">
             <span class="last_info">若有任何问题或投诉或想要加入我们，请发送邮件到我们的邮箱</span>
             <span class="last_info">联系邮箱: strayanimal@163.com</span>
         </div>
 
         <!--一篇文章-->
         <template id="a_passage">
-
+			<style>
+				.passage_a {
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					text-decoration: none;
+				}
+			</style>
             <div class="passage_deceiver">
-                <a id="passage_a" style="display: flex; flex-direction: row; justify-content: center; text-decoration: none">
-                    <div id="title_container" style="display: flex; flex-direction: column; margin: 10px">
-                        <span id="maintitle" style="font-size: 30px; margin-bottom: 10px" class="title">Main_Title</span>
-                        <span id="subtitle" style="font-size: 15px" class="title">Sub_Title</span>
-                    </div>
-                    <div id="image_container" style="margin: 10px">
-                        <img id="mainimage" style="width: 100px; height: 100px">
-                    </div>
+                <a id="passage_a" class="passage_a">
+	                <img id="main_image" style="width: 100%; height: 100%; top: 0; left: 0; padding-bottom: 20%; border-radius: 5px">
+	                <div id="title_container">
+		                <div id="main_title" style="font-size: larger"></div>
+		                <div id="sub_title"></div>
+	                </div>
                 </a>
             </div>
-
-        </template>
-
-        <!--一个help card-->
-        <template id="a_help">
-
-            <a id="pet_a" style="display: flex; flex-direction: column; align-items: center; width: 150px; height: 150px; border: rgba(0, 0, 0, 0.1) 1px solid; border-radius: 10px; margin: 10px; text-decoration: none; color: black" class="card">
-                <img src="../Images/loading.png" id="pet_img" class="face" style="width: 100%; height: 100%; border-radius: 10px; border: transparent 0 solid">
-                <div class="back" style="display: flex; flex-direction: column; align-items: center; justify-items: center; margin: 10px">
-                    <div>
-                        <span>名字 : </span><span id="pet_name"></span>
-                    </div>
-                    <div>
-                        <span>性别 : </span><span id="pet_sex"></span>
-                    </div>
-                </div>
-                <span class="hid" id="pet_id"></span>
-            </a>
 
         </template>
 
